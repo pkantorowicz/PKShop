@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CompanyCars.Core.Domain
+﻿namespace CompanyCars.Core.Domain
 {
     class Routes
     {
