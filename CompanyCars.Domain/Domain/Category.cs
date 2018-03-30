@@ -1,6 +1,7 @@
 ﻿namespace CompanyCars.Core.Domain
 {
-    class Category
+    public class Category : BaseEntity
     {
+        public string Name { get; protected set; }
     }
 }

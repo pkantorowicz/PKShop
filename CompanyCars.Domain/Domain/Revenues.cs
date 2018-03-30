@@ -1,6 +1,6 @@
 ﻿namespace CompanyCars.Core.Domain
 {
-    class Refuel
+    public class Revenues 
     {
     }
 }
