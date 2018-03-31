@@ -1,10 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CompanyCars.Core.Domain
+﻿namespace CompanyCars.Core.Domain
 {
-    class PaymentMethod
+    public class PaymentMethod : BaseEntity
     {
+        public string Method { get; protected set; }
+
+        protected PaymentMethod()
+        {
+        }
+
+        public PaymentMethod(int id, string method)
+        {
+            Id = Id;
+            Method = method;
+        }
     }
 }

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CompanyCars.Core.Domain
+﻿namespace CompanyCars.Core.Domain
 {
-    class Category
+    public class Category : BaseEntity
     {
+        public string Name { get; protected set; }
     }
 }

@@ -1,6 +1,4 @@
-using System;
-
-namespace CompanyCars.Models
+namespace CompanyCars.Web.Models
 {
     public class ErrorViewModel
     {

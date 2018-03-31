@@ -2,14 +2,16 @@
 
 namespace CompanyCars.Core.Domain
 {
-    public class Car
+    public class Car : BaseEntity
     {
-        public Guid Id { get; set; }
-        public string Brand { get; set; }
-        public string Name { get; set; }
-        public int Seats { get; set; }
-        public decimal Price { get; set; }
-        public Price Price { get; set; }
-
+        public Guid SerialNumber { get; protected set; }
+        public string Name { get; protected set; }
+        public string Brand { get; protected set; }
+        public int Seats { get; protected set; }
+        public Route Route { get; protected set; }
+        public Category Category { get; protected set; }
+        public Price Price { get; protected set; }
+        public DateTime UpdatedAt { get; protected set; }
+        public DateTime CreatedAt { get; protected set; }
     }
 }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CompanyCars.Core.Domain
+﻿namespace CompanyCars.Core.Domain
 {
-    class RouteCar
+    public class RouteCar : BaseEntity
     {
+        public int CarId { get; protected set; }
+        public int RouteId { get; protected set; }
     }
 }
