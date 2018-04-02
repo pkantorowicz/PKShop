@@ -10,15 +10,14 @@ namespace CompanyCars.Core.Domain.Products
     {
         private ISet<Route> _routes = new HashSet<Route>();
         private ISet<Price> _prices = new HashSet<Price>();
+        private ISet<Category> _categories = new HashSet<Category>();
 
         public string Name { get; protected set; }
         public string Brand { get; protected set; }
         public int Seats { get; protected set; }
         public byte[] Img { get; protected set; }
         public int Stock { get; protected set; }
-        public decimal Cost { get; protected set; }
         public bool Available { get; protected set; }
-        public Category CategoryName { get; protected set; }
         public DateTime UpdatedAt { get; protected set; }
         public DateTime CreatedAt { get; protected set; }
         public IEnumerable<Route> Routes
@@ -31,6 +30,11 @@ namespace CompanyCars.Core.Domain.Products
             get { return _prices; }
             set { _prices = new HashSet<Price>(value); }
         }
+        public IEnumerable<Category> Categories
+        {
+            get { return _categories; }
+            set { _categories = new HashSet<Category>(value); }
+        }
 
         protected Product(string name, string brand, int seats)
         {
@@ -39,9 +43,9 @@ namespace CompanyCars.Core.Domain.Products
             SetSeats(seats);
         }
 
-        public void SetCategoryName(string categoryName)
+        public void SetCategoryName(string category)
         {
-            CategoryName = Category.Create(categoryName);
+            Category.Create(category);
             UpdatedAt = DateTime.UtcNow;
         }
 
@@ -108,9 +112,9 @@ namespace CompanyCars.Core.Domain.Products
 
         public void SetStock(int stock)
         {
-            if (stock < 0)
+            if (stock < 0 || stock > 10000)
             {
-                throw new CompanyCarsException("Stock must be greater than 0.");
+                throw new CompanyCarsException("Stock must be greater than 0 and smaller than 10000.");
             }
             if (Stock == stock)
             {
@@ -161,6 +165,28 @@ namespace CompanyCars.Core.Domain.Products
                 throw new CompanyCarsException($"Price with name: '{name}' for product name: '{Name}' was not found.");
             }
             _prices.Remove(price);
+            UpdatedAt = DateTime.UtcNow;
+        }
+
+        public void AddCategory(Product productId, string name)
+        {
+            var category = Categories.SingleOrDefault(x => x.Name == name || x.ProductId == productId);
+            if (category != null)
+            {
+                throw new CompanyCarsException($"Category with name: '{name}' already exists for product with id: '{Name}'");
+            }
+            _categories.Add(Category.Create(productId, name));
+            UpdatedAt = DateTime.UtcNow;
+        }
+
+        public void DeleteCategory(Product productId, string name)
+        {
+            var category = Categories.SingleOrDefault(x => x.Name == name || x.ProductId == productId);
+            if (category == null)
+            {
+                throw new CompanyCarsException($"Category with name: '{name}' for product name: '{Name}' was not found.");
+            }
+            _categories.Remove(category);
             UpdatedAt = DateTime.UtcNow;
         }
     }

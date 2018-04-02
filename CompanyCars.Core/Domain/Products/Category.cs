@@ -3,15 +3,17 @@
 namespace CompanyCars.Core.Domain.Products
 {
     public class Category
-    {       
+    {
+        public Product ProductId { get; set; }
         public string Name { get; protected set; }
 
         protected Category()
         {
         }
 
-        public Category(string name)
+        public Category(Product productId, string name)
         {
+            ProductId = productId;
             SetName(name);
         }
 
@@ -28,7 +30,7 @@ namespace CompanyCars.Core.Domain.Products
             Name = name;
         }
 
-        public static Category Create(string name)
-            => new Category(name);
+        public static Category Create(Product productId, string name)
+            => new Category(productId, name);
     }
 }
