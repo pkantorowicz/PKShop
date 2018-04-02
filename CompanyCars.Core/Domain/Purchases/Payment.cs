@@ -8,14 +8,11 @@ namespace CompanyCars.Core.Domain.Purchases
     public class Payment : BaseEntity, IAggregateRoot
     {
         public int OrderId { get; protected set; }
-        public string PaymentType { get; protected set; }
-        public PaymentType Type { get; protected set; }
-        public string PaymentMethod { get; protected set; }
-        public PaymentMethod Method { get; protected set; }
+        public PaymentType PaymentType { get; protected set; }
+        public PaymentMethod PaymentMethod { get; protected set; }
         public string Title { get; protected set; }
         public string Description { get; protected set; }
-        public decimal Value { get; protected set; }
-        public Order Order { get; protected set; }
+        public Order Amount { get; protected set; }
         public DateTime UpdatedAt { get; protected set; }
         public DateTime CreateAt { get; protected set; }
 
@@ -23,7 +20,7 @@ namespace CompanyCars.Core.Domain.Purchases
         {
         }
 
-        public Payment(int orderId, string paymentType, string paymentMethod, string title,
+        public Payment(int orderId, PaymentType paymentType, PaymentMethod paymentMethod, string title,
             string decription, decimal value)
         {
             OrderId = orderId;
@@ -34,24 +31,14 @@ namespace CompanyCars.Core.Domain.Purchases
             CreateAt = DateTime.UtcNow;
         }
 
-        public void SetPaymentType(string paymentType)
+        public void SetPaymentType(PaymentType paymentType)
         {
-            if (string.IsNullOrEmpty(paymentType))
-            {
-                throw new CompanyCarsException($"Type cannot be empty");
-            }
-
             PaymentType = paymentType;
             UpdatedAt = DateTime.UtcNow;
         }
 
-        public void SetPaymentMethod(string paymentMethod)
+        public void SetPaymentMethod(PaymentMethod paymentMethod)
         {
-            if (string.IsNullOrEmpty(paymentMethod))
-            {
-                throw new CompanyCarsException($"Method cannot be empty");
-            }
-
             PaymentMethod = paymentMethod;
             UpdatedAt = DateTime.UtcNow;
         }

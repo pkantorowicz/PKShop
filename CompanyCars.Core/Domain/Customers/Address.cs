@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CompanyCars.Core.Domain.Customers
+﻿namespace CompanyCars.Core.Domain.Customers
 {
     public class Address 
     {
