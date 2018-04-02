@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace CompanyCars.Core.Domain
+namespace CompanyCars.Core.Domain.Products
 {
-    public class Routes : BaseEntity
+    public class Routes 
     {
         public int CarId { get; set; }
         public double Mileage { get; set; }

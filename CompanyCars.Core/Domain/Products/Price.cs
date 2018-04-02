@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CompanyCars.Core.Domain
+namespace CompanyCars.Core.Domain.Products
 {
     public class Price : BaseEntity
     {

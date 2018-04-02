@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace CompanyCars.Core.Domain
+namespace CompanyCars.Core.Domain.Products
 {
-    public class Route : BaseEntity
+    public class Route 
     {
-        public int CarId { get; protected set; }
+        public int ProductId { get; protected set; }
         public int CustomerId { get; protected set; }
         public double Kilometer { get; protected set; }
         public DateTime UpdatedAt { get; protected set; }
