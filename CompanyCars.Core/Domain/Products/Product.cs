@@ -36,22 +36,19 @@ namespace CompanyCars.Core.Domain.Products
             set { _categories = new HashSet<Category>(value); }
         }
 
-        protected Product(string name, string brand, int seats)
+        protected Product(string name, string brand, int seats, int stock, bool available)
         {
             SetName(name);
             SetBrand(brand);
             SetSeats(seats);
+            SetStock(stock);
+            Available = available;
         }
 
-        public void SetCategoryName(string category)
+        public void MarkAsAvailable()
         {
-            Category.Create(category);
+            Available = true;
             UpdatedAt = DateTime.UtcNow;
-        }
-
-        public Product(int id, string Name, string Brand, int Seats)
-        {
-
         }
 
         public void SetName(string name)
@@ -168,20 +165,20 @@ namespace CompanyCars.Core.Domain.Products
             UpdatedAt = DateTime.UtcNow;
         }
 
-        public void AddCategory(Product productId, string name)
+        public void AddCategory(string name)
         {
-            var category = Categories.SingleOrDefault(x => x.Name == name || x.ProductId == productId);
+            var category = Categories.SingleOrDefault(x => x.Name == name);
             if (category != null)
             {
                 throw new CompanyCarsException($"Category with name: '{name}' already exists for product with id: '{Name}'");
             }
-            _categories.Add(Category.Create(productId, name));
+            _categories.Add(Category.Create(name));
             UpdatedAt = DateTime.UtcNow;
         }
 
-        public void DeleteCategory(Product productId, string name)
+        public void DeleteCategory(string name)
         {
-            var category = Categories.SingleOrDefault(x => x.Name == name || x.ProductId == productId);
+            var category = Categories.SingleOrDefault(x => x.Name == name);
             if (category == null)
             {
                 throw new CompanyCarsException($"Category with name: '{name}' for product name: '{Name}' was not found.");

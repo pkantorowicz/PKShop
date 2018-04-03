@@ -22,11 +22,11 @@ namespace CompanyCars.Core.Domain
         public DateTime UpdatedAt { get; protected set; }
         public DateTime CreatedAt { get; protected set; }
 
-        protected User() 
+        public User() 
         {
         }
 
-        public User(Guid userIdentifier, string username, string email, string fullName, string avatar, string role)
+        public User(Guid userIdentifier, string username, string email, string fullName, string role)
         {
             UserIdentifier = userIdentifier;
             SetUsername(username);
@@ -65,13 +65,17 @@ namespace CompanyCars.Core.Domain
 
         public void SetEmail(string email)
         {
+            if (!email.Contains("@"))
+            {
+                throw new CompanyCarsException($"Invalid email: '{email}'");
+            }
             if (string.IsNullOrWhiteSpace(email))
             {
                 throw new CompanyCarsException("Email can not be empty.");
             }
             if (!EmailRegex.IsMatch(email))
             {
-                throw new CompanyCarsException($"Invalid email '{email}'.");
+                throw new CompanyCarsException($"Invalid email: '{email}'.");
             }
             if (Email == email)
             {
