@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using CompanyCars.Web.Models;
 using Microsoft.AspNetCore.Mvc;
-using CompanyCars.Models;
 
-namespace CompanyCars.Controllers
+namespace CompanyCars.Web.Controllers
 {
     public class HomeController : Controller
     {
