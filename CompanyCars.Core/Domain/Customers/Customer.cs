@@ -1,29 +1,20 @@
-﻿using CompanyCars.Core.Domain.Purchases;
+﻿using CompanyCars.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 
 namespace CompanyCars.Core.Domain.Customers
 {
-    public class Customer : BaseEntity
+    public class Customer : IAggregateRoot
     {
-        private List<Payment> _payments = new List<Payment>();
+        private List<CreditCard> _creditCards = new List<CreditCard>();
 
-        public Guid Id { get; set; }
-        public CustomerType Type { get; set; }
-        public string Name { get; set; }
-        public string CompanyName { get; set; }
-        public Address Address { get; set; }
-        public string Email { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public IEnumerable<Payment> Payments => _payments.AsReadOnly();
-
-        
-
-        public enum CustomerType
-        {
-            Person = 1,
-            Company = 2
-        }
+        public Guid Id { get; protected set; }
+        public string FirstName { get; protected set; }
+        public string LastName { get; protected set; }
+        public string CompanyName { get; protected set; }
+        public decimal Balance { get; protected set; }
+        public DateTime UpdatedAt { get; protected set; }
+        public DateTime CreatedAt { get; protected set; }
+        public IEnumerable<CreditCard> CreditCards => _creditCards.AsReadOnly();      
     }
 }

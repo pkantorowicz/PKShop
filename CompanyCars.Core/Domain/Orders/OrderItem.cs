@@ -1,6 +1,9 @@
 ﻿namespace CompanyCars.Core.Domain.Orders
 {
-    class OrderItem
+    public class OrderItem
     {
+        public ItemOrdered ItemOrdered { get; protected set; }
+        public int Quantity { get; protected set; }
+        public decimal Cost { get; protected set; }
     }
 }

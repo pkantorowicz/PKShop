@@ -1,17 +1,21 @@
 ﻿using CompanyCars.Core.Exceptions;
+using CompanyCars.Core.Interfaces;
+using System;
 
 namespace CompanyCars.Core.Domain.Products
 {
-    public class Category
+    public class Category : IAggregateRoot
     {
+        public Guid Id { get; set; }
         public string Name { get; protected set; }
 
         protected Category()
         {
         }
 
-        public Category(string name)
+        public Category(Guid id, string name)
         {
+            Id = id;
             SetName(name);
         }
 
@@ -29,6 +33,9 @@ namespace CompanyCars.Core.Domain.Products
         }
 
         public static Category Create(string name)
-            => new Category(name);
+            => Create(Guid.NewGuid(), name);
+
+        public static Category Create(Guid id, string name)
+            => new Category(id, name);
     }
 }

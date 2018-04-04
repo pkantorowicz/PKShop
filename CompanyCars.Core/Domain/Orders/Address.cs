@@ -1,4 +1,4 @@
-﻿namespace CompanyCars.Core.Domain.Customers
+﻿namespace CompanyCars.Core.Domain.Orders
 {
     public class Address 
     {

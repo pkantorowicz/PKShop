@@ -4,16 +4,16 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using System.Text.RegularExpressions;
 
-namespace CompanyCars.Core.Domain
+namespace CompanyCars.Core.Domain.Identity
 {
-    public class User : BaseEntity, IAggregateRoot
+    public class User : IAggregateRoot
     {
         private static readonly Regex EmailRegex = new Regex(
             @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
             @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
             RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
-        public Guid UserIdentifier { get; protected set; }
+        public Guid Id { get; protected set; }
         public string Username { get; protected set; }
         public string FullName { get; protected set; }
         public string Role { get; protected set; }
@@ -26,9 +26,9 @@ namespace CompanyCars.Core.Domain
         {
         }
 
-        public User(Guid userIdentifier, string username, string email, string fullName, string role)
+        public User(Guid id, string username, string email, string fullName, string role)
         {
-            UserIdentifier = userIdentifier;
+            Id = id;
             SetUsername(username);
             SetFullName(fullName);
             SetEmail(email);
@@ -41,11 +41,13 @@ namespace CompanyCars.Core.Domain
         {
             if (String.IsNullOrEmpty(username))
             {
-                throw new CompanyCarsException("Username is invalid.");
+                throw new CompanyCarsException(ErrorCodes.InvalidName, 
+                    "Username is invalid.");
             }
             if (username.Length > 50)
             {
-                throw new CompanyCarsException("Usename cannot be longer than 50 characters");
+                throw new CompanyCarsException(ErrorCodes.InvalidName, 
+                    "Usename cannot be longer than 50 characters");
             }
 
             Username = username.ToLowerInvariant();
@@ -56,7 +58,8 @@ namespace CompanyCars.Core.Domain
         {
             if (fullName.Length > 100)
             {
-                throw new CompanyCarsException("Fullname cannot be longer than 100 characters");
+                throw new CompanyCarsException(ErrorCodes.InvalidFullName,
+                    "Fullname cannot be longer than 100 characters");
             }
 
             FullName = fullName;
@@ -65,17 +68,15 @@ namespace CompanyCars.Core.Domain
 
         public void SetEmail(string email)
         {
-            if (!email.Contains("@"))
-            {
-                throw new CompanyCarsException($"Invalid email: '{email}'");
-            }
             if (string.IsNullOrWhiteSpace(email))
             {
-                throw new CompanyCarsException("Email can not be empty.");
+                throw new CompanyCarsException(ErrorCodes.InvalidEmail,
+                    "Email can not be empty.");
             }
-            if (!EmailRegex.IsMatch(email))
+            if (!EmailRegex.IsMatch(email) || !email.Contains("@"))
             {
-                throw new CompanyCarsException($"Invalid email: '{email}'.");
+                throw new CompanyCarsException(ErrorCodes.InvalidEmail,
+                    $"Invalid email: '{email}'.");
             }
             if (Email == email)
             {
@@ -88,9 +89,10 @@ namespace CompanyCars.Core.Domain
 
         public void SetRole(string role)
         {
-            if (!Domain.Role.IsValid(role))
+            if (!Identity.Role.IsValid(role))
             {
-                throw new CompanyCarsException($"Invalid role: '{role}'.");
+                throw new CompanyCarsException(ErrorCodes.InvalidRole,
+                    $"Invalid role: '{role}'.");
             }
 
             Role = role;
@@ -101,7 +103,8 @@ namespace CompanyCars.Core.Domain
         {
             if (string.IsNullOrWhiteSpace(password))
             {
-                throw new CompanyCarsException("Password can not be empty.");
+                throw new CompanyCarsException(ErrorCodes.InvalidPassword,
+                    "Password can not be empty.");
             }
 
             Password = passwordHasher.HashPassword(this, password);

@@ -1,6 +1,10 @@
-﻿namespace CompanyCars.Core.Domain.Orders
+﻿using System;
+
+namespace CompanyCars.Core.Domain.Orders
 {
-    class ItemOrdered
+    public class ItemOrdered
     {
+        public Guid ProductId { get; protected set; }
+        public string ProductName { get; protected set; }
     }
 }

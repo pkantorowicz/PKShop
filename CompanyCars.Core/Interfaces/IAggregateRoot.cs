@@ -1,6 +1,9 @@
-﻿namespace CompanyCars.Core.Interfaces
+﻿using System;
+
+namespace CompanyCars.Core.Interfaces
 {
     public interface IAggregateRoot 
     {
+        Guid Id { get; }
     }
 }

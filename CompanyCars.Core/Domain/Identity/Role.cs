@@ -1,4 +1,4 @@
-﻿namespace CompanyCars.Core.Domain
+﻿namespace CompanyCars.Core.Domain.Identity
 {
     public static class Role
     {

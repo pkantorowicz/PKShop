@@ -1,4 +1,4 @@
-﻿using CompanyCars.Core.Domain;
+﻿using CompanyCars.Core.Domain.Identity;
 using CompanyCars.Core.Exceptions;
 using Xunit;
 
