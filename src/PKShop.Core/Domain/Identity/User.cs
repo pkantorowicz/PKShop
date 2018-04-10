@@ -15,7 +15,6 @@ namespace PKShop.Core.Domain.Identity
 
         public Guid Id { get; protected set; }
         public string Username { get; protected set; }
-        public string FullName { get; protected set; }
         public string Role { get; protected set; }
         public string Email { get; protected set; }
         public string Password { get; protected set; }
@@ -30,7 +29,6 @@ namespace PKShop.Core.Domain.Identity
         {
             Id = id;
             SetUsername(username);
-            SetFullName(fullName);
             SetEmail(email);
             SetRole(role);
             CreatedAt = DateTime.UtcNow;
@@ -51,18 +49,6 @@ namespace PKShop.Core.Domain.Identity
             }
 
             Username = username.ToLowerInvariant();
-            UpdatedAt = DateTime.UtcNow;
-        }
-
-        public void SetFullName(string fullName)
-        {
-            if (fullName.Length > 100)
-            {
-                throw new PKShopException(ErrorCodes.InvalidFullName,
-                    "Fullname cannot be longer than 100 characters");
-            }
-
-            FullName = fullName;
             UpdatedAt = DateTime.UtcNow;
         }
 

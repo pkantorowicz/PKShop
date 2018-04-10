@@ -25,14 +25,6 @@ namespace PKShop.Tests.DomainTests
         }
 
         [Fact]
-        public void get_fullname_invalid_argument_check_throws_custom_exceptions()
-        {
-            Assert.Throws<PKShopException>(()
-                => userClass.SetFullName(@"interestingHowLongIsItFiftyCharactersString?BecauseIWantToMakeError
-                   WeNeedMoreCharacterToCheckACustomErrorForFullnameFieldButWeHaveAChanceToDoIt"));
-        }
-
-        [Fact]
         public void get_role_invalid_argument_check_throws_custom_exceptions()
         {
             Assert.Throws<PKShopException>(() => userClass.SetRole("AnyRole"));
