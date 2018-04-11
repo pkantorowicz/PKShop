@@ -30,5 +30,6 @@
         public static string InvalidProductCost => "invalid_product_cost";
         public static string InvalidProductCategory => "invalid_product_category";
         public static string InvalidTaxPercentage => "invalid_tax_percentage";
+        public static string CustomerNotFound => "customer_not_found";
     }
 }
