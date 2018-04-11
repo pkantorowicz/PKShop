@@ -25,5 +25,9 @@
         public static string CreditCardAlreadyExists => "credit_card_already_exists";
         public static string CreditCardNotFound => "credit_card_not_found";
         public static string InvalidProductCode => "invalid_product_code";
+        public static string InvalidProductName => "invalid_product_name";
+        public static string InvalidProductQuantity => "invalid_product_quantity";
+        public static string InvalidProductCost => "invalid_product_cost";
+        public static string InvalidProductCategory => "invalid_product_category";
     }
 }
