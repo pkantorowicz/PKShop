@@ -29,5 +29,6 @@
         public static string InvalidProductQuantity => "invalid_product_quantity";
         public static string InvalidProductCost => "invalid_product_cost";
         public static string InvalidProductCategory => "invalid_product_category";
+        public static string InvalidTaxPercentage => "invalid_tax_percentage";
     }
 }
