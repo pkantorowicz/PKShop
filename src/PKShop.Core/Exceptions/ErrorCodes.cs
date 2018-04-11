@@ -24,5 +24,6 @@
         public static string CardExpired => "card_was_expired";
         public static string CreditCardAlreadyExists => "credit_card_already_exists";
         public static string CreditCardNotFound => "credit_card_not_found";
+        public static string InvalidProductCode => "invalid_product_code";
     }
 }

@@ -29,19 +29,19 @@ namespace PKShop.Core.Domain.Countries
                 throw new PKShopException(ErrorCodes.InvalidCountry,
                     "Username is invalid.");
             }
-            if (name.Length > 50)
+            if (name.Length > 100)
             {
                 throw new PKShopException(ErrorCodes.InvalidCountry,
-                    "Usename cannot be longer than 50 characters");
+                    "Usename cannot be longer than 100 characters");
             }
             Name = name.ToLowerInvariant();
             UpdatedAt = DateTime.UtcNow;
         }
 
-        public Country Create(string name)
-            => Create(Guid.NewGuid(), name);
-
         public Country Create(Guid id, string name)
             => new Country(id, name);
+
+        public Country Create(string name)
+            => Create(Guid.NewGuid(), name);
     }
 }
