@@ -19,6 +19,23 @@ namespace PKShop.Core.Domain.Orders
         public IEnumerable<OrderItem> OrderItems => _orderItems.AsReadOnly();
         public OrderStatus Status { get; protected set; }
 
+        protected Order()
+        {      
+        }
+
+        public Order(Guid id, Guid customerId, long number, decimal totalTax, decimal totalAmount,
+            OrderStatus status, Address shippingTo)
+        {
+            Id = id;
+            CustomerId = customerId;
+            Number = number;
+            TotalTax = totalTax;
+            TotalAmount = totalAmount;
+            status = OrderStatus.Created;
+            ShippingToAddress = shippingTo;
+            CreatedAt = DateTime.UtcNow;
+        }
+
         public enum OrderStatus
         {
             Created = 0,
