@@ -9,4 +9,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.0" />
   </ItemGroup>
 
+    <ItemGroup>
+    <ProjectReference Include="..\PKShop.Core\PKShop.Core.csproj" />
+  </ItemGroup>
+
 </Project>
