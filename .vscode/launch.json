@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/CompanyCars.Service/bin/Debug/netcoreapp2.0/CompanyCars.Service.dll",
+            "program": "${workspaceFolder}/src/PKShop.Service/bin/Debug/netcoreapp2.0/PKShop.Service.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/CompanyCars.Service",
+            "cwd": "${workspaceFolder}/src/PKShop.Service",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
