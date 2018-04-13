@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   
   <ItemGroup>
@@ -9,8 +9,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.0" />
   </ItemGroup>
 
-    <ItemGroup>
-    <ProjectReference Include="..\PKShop.Core\PKShop.Core.csproj" />
+  <ItemGroup>
+    <ProjectReference Include="..\PKShop.Contracts\PKShop.Contracts.csproj" />
+    <ProjectReference Include="..\PKShop.Struct\PKShop.Struct.csproj" />
+    <ProjectReference Include="..\PKShop.Read\PKShop.Read.csproj" />
+    <ProjectReference Include="..\PKShop.Data\PKShop.Data.csproj" />
   </ItemGroup>
 
 </Project>
