@@ -8,4 +8,9 @@
     <ProjectReference Include="..\PKShop.Struct\PKShop.Struct.csproj" />
   </ItemGroup>
 
+  
+  <ItemGroup>
+    <PackageReference Include="mediatr" Version="3.0.1" />
+  </ItemGroup>
+
 </Project>
