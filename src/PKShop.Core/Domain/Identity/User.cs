@@ -1,8 +1,8 @@
 ﻿using PKShop.Core.Exceptions;
-using PKShop.Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Text.RegularExpressions;
+using PKShop.Core.Interfaces;
 
 namespace PKShop.Core.Domain.Identity
 {

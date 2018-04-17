@@ -1,7 +1,7 @@
 ﻿using PKShop.Core.Exceptions;
-using PKShop.Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using System;
+using PKShop.Core.Interfaces;
 
 namespace PKShop.Core.Domain.Identity
 {

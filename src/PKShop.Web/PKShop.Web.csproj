@@ -12,7 +12,7 @@
     <ProjectReference Include="..\PKShop.Contracts\PKShop.Contracts.csproj" />
     <ProjectReference Include="..\PKShop.Struct\PKShop.Struct.csproj" />
     <ProjectReference Include="..\PKShop.Read\PKShop.Read.csproj" />
-    <ProjectReference Include="..\PKShop.Messages\PKShop.Messages.csproj" />
+    <ProjectReference Include="..\PKShop.Bus\PKShop.Bus.csproj" />
   </ItemGroup>
 
   <ItemGroup>
