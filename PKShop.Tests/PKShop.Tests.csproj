@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\PKShop.Core\PKShop.Core.csproj" />
+    <ProjectReference Include="..\src\PKShop.Domain\PKShop.Domain.csproj" />
   </ItemGroup>
 
 </Project>
