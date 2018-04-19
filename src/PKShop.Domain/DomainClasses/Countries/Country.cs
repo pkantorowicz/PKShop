@@ -32,7 +32,7 @@ namespace PKShop.Domain.DomainClasses.Countries
             if (name.Length > 100)
             {
                 throw new PKShopException(ErrorCodes.InvalidCountry,
-                    "Usename cannot be longer than 100 characters");
+                    "Usename can not be longer than 100 characters");
             }
             Name = name.ToLowerInvariant();
             UpdatedAt = DateTime.UtcNow;
