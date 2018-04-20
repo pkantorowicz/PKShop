@@ -23,7 +23,7 @@ namespace PKShop.Core.Notifications
             return _notifications;
         }
 
-        public virtual bool HasNotfications()
+        public virtual bool HasNotifications()
         {
             return GetNotifications().Any();
         }

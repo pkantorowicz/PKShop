@@ -24,6 +24,17 @@ namespace PKShop.Domain.DomainClasses.Products
         {
         }
 
+        public Product(Guid id, string name, int quantity, decimal cost)
+        {
+            Id = id;
+            Name = name;
+            Active = true;
+            Quantity = quantity;
+            Cost = cost;
+            UpdatedAt = DateTime.UtcNow;
+            CreatedAt = DateTime.UtcNow;
+        }
+
         public Product(Guid id, string name, int quantity, decimal cost,
             ProductCode code, Category category)
         {
@@ -31,7 +42,7 @@ namespace PKShop.Domain.DomainClasses.Products
             Name = name;
             Active = true;
             Quantity = quantity;
-            Cost= cost;
+            Cost = cost;
             Code = code;
             Category = category;
             UpdatedAt = DateTime.UtcNow;
