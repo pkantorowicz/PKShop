@@ -16,9 +16,9 @@ namespace PKShop.Domain.CommandHandlers
         INotificationHandler<DeleteProductCommand>
         {
             private readonly IProductRepository _productRepository;
-            private readonly IMediatrHandler _bus;
+            private readonly IMediatorHandler _bus;
 
-            public ProductCommandHandler(IProductRepository productRepository, IMediatrHandler bus,
+            public ProductCommandHandler(IProductRepository productRepository, IMediatorHandler bus,
                 IUnitOfWork uow, INotificationHandler<DomainNotification> notification) :
                 base(uow, bus, notification)
             {

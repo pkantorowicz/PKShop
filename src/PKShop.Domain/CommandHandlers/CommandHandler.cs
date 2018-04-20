@@ -9,10 +9,10 @@ namespace PKShop.Domain.CommandHandlers
     public class CommandHandler
     {
         private readonly IUnitOfWork _uow;
-        private readonly IMediatrHandler _bus;
+        private readonly IMediatorHandler _bus;
         private readonly DomainNotificationHandler _notifications;
 
-        public CommandHandler(IUnitOfWork uow, IMediatrHandler bus, INotificationHandler<DomainNotification> notifications)
+        public CommandHandler(IUnitOfWork uow, IMediatorHandler bus, INotificationHandler<DomainNotification> notifications)
         {
             _uow = uow;
             _notifications = (DomainNotificationHandler)notifications;
