@@ -19,28 +19,58 @@ namespace PKShop.Domain.CommandHandlers
             private readonly IMediatrHandler _bus;
 
             public ProductCommandHandler(IProductRepository productRepository, IMediatrHandler bus,
-                IUnitOfWork unitOfWork, INotificationHandler<DomainNotification> notification) :
+                IUnitOfWork uow, INotificationHandler<DomainNotification> notification) :
                 base(uow, bus, notification)
             {
                 _productRepository = productRepository;
                 _bus = bus;
             }
 
-            public async Task HandleAsync(CreateNewProductCommand command)
+            public void Handle(CreateNewProductCommand command)
             {
                 var product = new Product(Guid.NewGuid(), command.Name, command.Quantity, command.Cost);
 
-                if (await _productRepository.GetAsync(product.Id) != null)
+                if (_productRepository.GetAsync(product.Id) != null)
                 {
-                    await _bus.RaiseEvent(new DomainNotification(command.MessageType, "Product with this email already exists."));
+                    _bus.RaiseEvent(new DomainNotification(command.MessageType, "Product with this email already exists."));
                     return;
                 }
-
-                await _productRepository.CreateAsync(product);
+                _productRepository.CreateAsync(product);
 
                 if(Commit())
                 {
-                    await _bus.RaiseEvent(new ProductCreatedEvent(product.Id, product.Name, product.Quantity, product.Cost));
+                    _bus.RaiseEvent(new ProductCreatedEvent(product.Id, product.Name, product.Quantity, product.Cost));
+                }
+            }
+
+            public void Handle(UpdateProductCommand command)
+            {
+                var product = new Product(Guid.NewGuid(), command.Name, command.Quantity, command.Cost);
+                var existingProduct = _productRepository.GetAsync(product.Id);
+
+                if (existingProduct != null)
+                {
+                    if (existingProduct.Equals(product))
+                    {
+                        _bus.RaiseEvent(new DomainNotification(command.MessageType, "This product already exists in shop."));
+                        return;
+                    }
+                }
+                _productRepository.UpdateAsync(product);
+
+                if (Commit())
+                {
+                   _bus.RaiseEvent(new ProductUpdatedEvent(product.Id, product.Name, product.Quantity, product.Cost));
+                }
+            }
+
+            public void Handle(DeleteProductCommand command)
+            {
+                _productRepository.DeleteAsync(command.Id);
+
+                if (Commit())
+                {
+                    _bus.RaiseEvent(new ProductCodeDeletedEvent(command.Id));
                 }
             }
         }
