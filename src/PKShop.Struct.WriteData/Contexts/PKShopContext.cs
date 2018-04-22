@@ -4,9 +4,9 @@ using Microsoft.Extensions.Configuration;
 using PKShop.Domain.DomainClasses.Products;
 using PKShop.Struct.WriteData.EntityMappings;
 
-namespace Equinox.Infra.Data.Context
+namespace PKShop.Struct.WriteData.Context
 {
-    public class EquinoxContext : DbContext
+    public class PKShopContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
 
