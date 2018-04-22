@@ -29,8 +29,9 @@ namespace PKShop.Domain.CommandHandlers
             public void Handle(CreateNewProductCommand command)
             {
                 var product = new Product(Guid.NewGuid(), command.Name, command.Quantity, command.Cost);
+                var productFromDb = _productRepository.GetAsync(product.Id);
 
-                if (_productRepository.GetAsync(product.Id) != null)
+                if (productFromDb != null)
                 {
                     _bus.RaiseEvent(new DomainNotification(command.MessageType, "Product with this email already exists."));
                     return;

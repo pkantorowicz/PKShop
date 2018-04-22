@@ -12,8 +12,9 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
   </ItemGroup>
 
-    <ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\PKShop.Common.Bus\PKShop.Common.Bus.csproj" />
+    <ProjectReference Include="..\PKShop.Struct.Services\PKShop.Struct.Services.csproj" />
   </ItemGroup>
 
 </Project>
