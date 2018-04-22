@@ -29,14 +29,14 @@ namespace PKShop.Domain.CommandHandlers
             public void Handle(CreateNewProductCommand command)
             {
                 var product = new Product(Guid.NewGuid(), command.Name, command.Quantity, command.Cost);
-                var productFromDb = _productRepository.GetAsync(product.Id);
+                var productFromDb = _productRepository.Get(product.Id);
 
                 if (productFromDb != null)
                 {
                     _bus.RaiseEvent(new DomainNotification(command.MessageType, "Product with this email already exists."));
                     return;
                 }
-                _productRepository.CreateAsync(product);
+                _productRepository.Create(product);
 
                 if(Commit())
                 {
@@ -47,7 +47,7 @@ namespace PKShop.Domain.CommandHandlers
             public void Handle(UpdateProductCommand command)
             {
                 var product = new Product(Guid.NewGuid(), command.Name, command.Quantity, command.Cost);
-                var existingProduct = _productRepository.GetAsync(product.Id);
+                var existingProduct = _productRepository.Get(product.Id);
 
                 if (existingProduct != null)
                 {
@@ -57,7 +57,7 @@ namespace PKShop.Domain.CommandHandlers
                         return;
                     }
                 }
-                _productRepository.UpdateAsync(product);
+                _productRepository.Update(product);
 
                 if (Commit())
                 {
@@ -67,7 +67,7 @@ namespace PKShop.Domain.CommandHandlers
 
             public void Handle(DeleteProductCommand command)
             {
-                _productRepository.DeleteAsync(command.Id);
+                _productRepository.Delete(command.Id);
 
                 if (Commit())
                 {

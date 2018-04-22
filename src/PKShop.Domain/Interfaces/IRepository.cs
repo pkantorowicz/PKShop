@@ -13,9 +13,9 @@ namespace PKShop.Domain.Interfaces
         IEnumerable<T> Browse();
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
         bool Exists(Expression<Func<T, bool>> predicate);
-        T Create(T entity);
-        T UpdateAsync(T entity);
-        void DeleteAsync(Guid id);
+        void Create(T entity);
+        void Update(T entity);
+        void Delete(Guid id);
         int SaveChanges();
     }
 }
