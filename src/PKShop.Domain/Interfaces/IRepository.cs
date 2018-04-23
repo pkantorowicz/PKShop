@@ -12,7 +12,6 @@ namespace PKShop.Domain.Interfaces
         T Get(Expression<Func<T, bool>> predicate);
         IEnumerable<T> Browse();
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
-        bool Exists(Expression<Func<T, bool>> predicate);
         void Create(T entity);
         void Update(T entity);
         void Delete(Guid id);

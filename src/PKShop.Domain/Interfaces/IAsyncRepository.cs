@@ -12,9 +12,7 @@ namespace PKShop.Domain.Interfaces
         Task<T> GetAsync(Expression<Func<T, bool>> predicate);
         Task<IEnumerable<T>> BrowseAsync();
         Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
-        Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate);
         Task CreateAsync(T entity);
-        Task UpdateAsync(T entity);
         Task DeleteAsync(Guid id);
         Task<int> SaveChangesAsync();
     }

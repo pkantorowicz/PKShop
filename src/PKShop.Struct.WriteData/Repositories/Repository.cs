@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -20,96 +21,57 @@ namespace PKShop.Struct.WriteData.Repositories
             _entity = context.Set<T>();
         }
 
-        public Task<T> GetAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<T> GetAsync(Guid id)
+            => await _entity.FindAsync(id);
 
         public T Get(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+            => _entity.Find(id);
 
-        public Task<T> GetAsync(Expression<Func<T, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate)
+            => await _entity.FindAsync(predicate);
 
         public T Get(Expression<Func<T, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
+            => _entity.Find(predicate);
 
-        public Task<IEnumerable<T>> BrowseAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<T>> BrowseAsync()
+            => await _entity.ToListAsync();
 
         public IEnumerable<T> Browse()
-        {
-            throw new NotImplementedException();
-        }
+            => _entity.ToList();
 
-        public Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
+            => await _entity.AsQueryable().Where(predicate).ToListAsync();
 
         public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
+            => _entity.AsQueryable().Where(predicate).ToList();
 
-        public Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Exists(Expression<Func<T, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task CreateAsync(T entity)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task CreateAsync(T entity)
+            => await _entity.AddAsync(entity);
 
         public void Create(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateAsync(T entity)
-        {
-            throw new NotImplementedException();
-        }
+            => _entity.Add(entity);
 
         public void Update(T entity)
-        {
-            throw new NotImplementedException();
-        }
+            => _entity.Update(entity);
 
-        public Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var entity = await GetAsync(id);
+            _entity.Remove(entity);
         }
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            var entity = Get(id);
+            _entity.Remove(entity);
         }
 
         public async Task<int> SaveChangesAsync()
-        {
-            return await _context.SaveChangesAsync();
-        }
+            => await _context.SaveChangesAsync();
 
 
         public int SaveChanges()
-        {
-            return _context.SaveChanges();
-        }
+            => _context.SaveChanges();
 
         public void Dispose()
         {
