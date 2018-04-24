@@ -9,4 +9,8 @@
     <ProjectReference Include="..\PKShop.Struct.WriteData\PKShop.Struct.WriteData.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.1.1" />
+  </ItemGroup>
+
 </Project>
