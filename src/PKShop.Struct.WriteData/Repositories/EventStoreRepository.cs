@@ -17,7 +17,7 @@ namespace Equinox.Infra.Data.Repository.EventSourcing
 
         public IList<StoredEvent> All(Guid aggregateId)
         {
-            return (from e in _context.StoredEvent where e.AggregateId == aggregateId select e).ToList();
+            return (from x in _context.StoredEvent where x.AggregateId == aggregateId select x).ToList();
         }
 
         public void Store(StoredEvent theEvent)
