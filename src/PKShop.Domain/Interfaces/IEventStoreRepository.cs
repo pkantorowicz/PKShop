@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using PKShop.Core.Events;
 
-namespace Equinox.Infra.Data.Repository.EventSourcing
+namespace PKShop.Domain.Interfaces
 {
     public interface IEventStoreRepository : IDisposable
     {

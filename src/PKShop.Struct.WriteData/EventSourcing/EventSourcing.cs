@@ -1,7 +1,7 @@
-using Equinox.Infra.Data.Repository.EventSourcing;
 using Newtonsoft.Json;
 using PKShop.Core.Events;
 using PKShop.Domain.DomainClasses.Identity;
+using PKShop.Domain.Interfaces;
 
 namespace PKShop.Struct.WriteData.EventSourcing
 {

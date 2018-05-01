@@ -3,8 +3,9 @@ using System.Linq;
 using System.Collections.Generic;
 using PKShop.Struct.WriteData.Context;
 using PKShop.Core.Events;
+using PKShop.Domain.Interfaces;
 
-namespace Equinox.Infra.Data.Repository.EventSourcing
+namespace PKShop.Struct.WriteData.Repositories
 {
     public class EventStoreSQLRepository : IEventStoreRepository
     {
