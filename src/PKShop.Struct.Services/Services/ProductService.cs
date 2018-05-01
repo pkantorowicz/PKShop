@@ -34,10 +34,8 @@ namespace PKShop.Struct.Services.Services
         public async Task<IEnumerable<ProductDTO>> BrowseAsync()
             => _mapper.Map<IEnumerable<Product>, IEnumerable<ProductDTO>>(await _productRepository.BrowseAsync());
         
-        public Task<IEnumerable<ProductHistoryData>> GetHistoryDataAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<ProductHistoryData>> GetHistoryDataAsync(Guid id)
+            => ProductHistory.ProductHistoryToJson(await _eventStoreRepository.AllAsync(id));
 
         public async Task CreateAsync(ProductDTO product)
         {
