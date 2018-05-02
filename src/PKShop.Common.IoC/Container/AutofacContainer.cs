@@ -1,4 +1,6 @@
 using Autofac;
+using AutoMapper;
+using PKShop.Common.IoC.Modules;
 
 namespace PKShop.Common.IoC
 {
@@ -6,7 +8,8 @@ namespace PKShop.Common.IoC
     {
         protected override void Load(ContainerBuilder builder)
         {
-            
+            builder.RegisterModule<MapperModule>();
+            builder.RegisterModule<ServicesModule>();
         }
     }
 }
