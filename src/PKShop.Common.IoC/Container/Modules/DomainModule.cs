@@ -11,8 +11,8 @@ namespace PKShop.Common.IoC.Modules
         protected override void Load(ContainerBuilder builder)
         {
             var assembly = typeof(DomainModule)
-            .GetTypeInfo()
-            .Assembly;
+                .GetTypeInfo()
+                .Assembly;
 
             builder.RegisterAssemblyTypes(assembly)
                    .AsClosedTypesOf(typeof(INotificationHandler<>))

@@ -10,8 +10,8 @@ namespace PKShop.Common.IoC.Modules
         protected override void Load(ContainerBuilder builder)
         {
             var assembly = typeof(DataModule)
-            .GetTypeInfo()
-            .Assembly;
+                .GetTypeInfo()
+                .Assembly;
 
             builder.RegisterType<UnitOfWork>()
                    .As<IUnitOfWork>()
