@@ -1,15 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.3">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.0" />
   </ItemGroup>
-
+  
   <ItemGroup>
+    <ProjectReference Include="..\PKShop.Common.Bus\PKShop.Common.Bus.csproj" />
     <ProjectReference Include="..\PKShop.Core\PKShop.Core.csproj" />
   </ItemGroup>
 

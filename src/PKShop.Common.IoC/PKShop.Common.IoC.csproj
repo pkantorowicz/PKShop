@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.3">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,10 +10,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PkShop.Struct.Services\PkShop.Struct.Services.csproj" />
-    <ProjectReference Include="..\PkShop.Domain\PkShop.Domain.csproj" />
-    <ProjectReference Include="..\PkShop.Common.Identity\PkShop.Common.Identity.csproj" />
-    <ProjectReference Include="..\PkShop.Struct.WriteData\PkShop.Struct.WriteData.csproj" />
+    <ProjectReference Include="..\PKShop.Common.Identity\PKShop.Common.Identity.csproj" />
+    <ProjectReference Include="..\PKShop.Domain\PKShop.Domain.csproj" />
+    <ProjectReference Include="..\PKShop.Struct.Services\PKShop.Struct.Services.csproj" />
+    <ProjectReference Include="..\PKShop.Struct.WriteData\PKShop.Struct.WriteData.csproj" />
   </ItemGroup>
 
 </Project>

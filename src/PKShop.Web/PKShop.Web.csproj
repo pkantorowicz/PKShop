@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PKShop.Common.Bus\PKShop.Common.Bus.csproj" />
+    <ProjectReference Include="..\PKShop.Common.Identity\PKShop.Common.Identity.csproj" />
     <ProjectReference Include="..\PKShop.Common.IoC\PKShop.Common.IoC.csproj" />
     <ProjectReference Include="..\PKShop.Struct.Services\PKShop.Struct.Services.csproj" />
   </ItemGroup>
