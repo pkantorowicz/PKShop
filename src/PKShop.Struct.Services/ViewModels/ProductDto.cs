@@ -1,8 +1,8 @@
 using System;
 
-namespace PKShop.Struct.Services.DTO
+namespace PKShop.Struct.Services.ViewModels
 {
-    public class ProductDTO
+    public class ProductViewModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

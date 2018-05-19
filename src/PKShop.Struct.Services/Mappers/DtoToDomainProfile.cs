@@ -1,6 +1,6 @@
 using AutoMapper;
 using PKShop.Domain.DomainClasses.Products;
-using PKShop.Struct.Services.DTO;
+using PKShop.Struct.Services.ViewModels;
 
 namespace PKShop.Struct.Services.Mappers
 {
@@ -8,7 +8,7 @@ namespace PKShop.Struct.Services.Mappers
     {
         public DtoToDomainProfile()
         {
-            CreateMap<ProductDTO, Product>();
+            CreateMap<ProductViewModel, Product>();
         }
     }
 }

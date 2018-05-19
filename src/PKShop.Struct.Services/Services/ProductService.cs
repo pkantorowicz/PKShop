@@ -7,8 +7,8 @@ using PKShop.Core.Bus;
 using PKShop.Domain.Commands.Products;
 using PKShop.Domain.DomainClasses.Products;
 using PKShop.Domain.Interfaces;
-using PKShop.Struct.Services.DTO;
 using PKShop.Struct.Services.History;
+using PKShop.Struct.Services.ViewModels;
 
 namespace PKShop.Struct.Services.Services
 {
@@ -28,22 +28,22 @@ namespace PKShop.Struct.Services.Services
             _mapper = mapper;
         }
 
-        public async Task<ProductDTO> GetAsync(Guid id)
-            => _mapper.Map<ProductDTO>(await _productRepository.GetAsync(id));
+        public async Task<ProductViewModel> GetAsync(Guid id)
+            => _mapper.Map<ProductViewModel>(await _productRepository.GetAsync(id));
 
-        public async Task<IEnumerable<ProductDTO>> BrowseAsync()
-            => _mapper.Map<IEnumerable<Product>, IEnumerable<ProductDTO>>(await _productRepository.BrowseAsync());
+        public async Task<IEnumerable<ProductViewModel>> BrowseAsync()
+            => _mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(await _productRepository.BrowseAsync());
         
         public async Task<IEnumerable<ProductHistoryData>> GetHistoryDataAsync(Guid id)
             => ProductHistory.ProductHistoryToJson(await _eventStoreRepository.AllAsync(id));
 
-        public async Task CreateAsync(ProductDTO product)
+        public async Task CreateAsync(ProductViewModel product)
         {
             var createCommand = _mapper.Map<CreateNewProductCommand>(product);
             await _bus.SendCommand(createCommand);
         }
 
-        public async Task UpdateAsync(ProductDTO product)
+        public async Task UpdateAsync(ProductViewModel product)
         {
             var updateCommand = _mapper.Map<UpdateProductCommand>(product);
             await _bus.SendCommand(updateCommand);
