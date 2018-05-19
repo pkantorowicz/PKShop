@@ -1,6 +1,5 @@
 using MediatR;
 using PKShop.Core.Bus;
-using PKShop.Core.Commands;
 using PKShop.Core.Notifications;
 using PKShop.Domain.Interfaces;
 

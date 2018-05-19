@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using PKShop.Core.Bus;
 using PKShop.Domain.Commands.Products;
 using PKShop.Domain.DomainClasses.Products;

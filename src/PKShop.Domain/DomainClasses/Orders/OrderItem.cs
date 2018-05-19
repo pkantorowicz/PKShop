@@ -1,5 +1,4 @@
 ﻿using System;
-using PKShop.Domain.DomainClasses.Carts;
 using PKShop.Domain.DomainClasses.Products;
 
 namespace PKShop.Domain.DomainClasses.Orders

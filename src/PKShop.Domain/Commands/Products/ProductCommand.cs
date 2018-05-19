@@ -1,6 +1,5 @@
 using System;
 using PKShop.Core.Commands;
-using PKShop.Core.Events;
 
 namespace PKShop.Domain.Commands.Products
 {

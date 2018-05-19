@@ -12,4 +12,10 @@
     <ProjectReference Include="..\PKShop.Core\PKShop.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.6.2" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
+  </ItemGroup>
+  
 </Project>
+

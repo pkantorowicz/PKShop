@@ -1,7 +1,5 @@
 ﻿using PKShop.Domain.DomainClasses.Abstract;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace PKShop.Domain.DomainClasses.Purchases
 {
