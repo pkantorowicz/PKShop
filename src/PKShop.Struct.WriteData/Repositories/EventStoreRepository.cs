@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PKShop.Struct.WriteData.Repositories
 {
-    public class EventStoreSQLRepository : IEventStoreRepository
+    public class EventStoreRepository : IEventStoreRepository
     {
         private readonly EventStoreContext _context;
 
-        public EventStoreSQLRepository(EventStoreContext context)
+        public EventStoreRepository(EventStoreContext context)
         {
             _context = context;
         }

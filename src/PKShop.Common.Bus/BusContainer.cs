@@ -9,6 +9,7 @@ namespace PKShop.Common.Bus
         public static void Load(ContainerBuilder builder)
         {
             var busAssembly = Assembly.GetExecutingAssembly();
+
             builder.RegisterAssemblyTypes(busAssembly)
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
