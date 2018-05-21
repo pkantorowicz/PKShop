@@ -9,7 +9,7 @@ using System.Reflection;
 
 namespace PKShop.Domain
 {
-    public static class IndentityContainer
+    public static class DomainContainer
     {
         public static void Load(ContainerBuilder builder)
         {

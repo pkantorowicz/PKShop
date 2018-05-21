@@ -1,7 +1,16 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using AutoMapper;
+using MediatR;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PKShop.Common.Bus;
+using PKShop.Common.Identity;
+using PKShop.Domain;
+using System;
+using System.Reflection;
 
 namespace PKShop.Web
 {
@@ -13,14 +22,29 @@ namespace PKShop.Web
         }
 
         public IConfiguration Configuration { get; }
+        public IContainer Container { get; private set; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddMediatR(typeof(Startup));
+            services.AddAutoMapper();
+
+            var builder = new ContainerBuilder();
+
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                   .AsImplementedInterfaces();
+
+            DomainContainer.Load(builder);
+            BusContainer.Load(builder);
+            IndentityContainer.Load(builder);
+            ServicesContainer.Load(builder);
+            DataContainer.Load(builder);
+
+            return new AutofacServiceProvider(Container);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

@@ -13,5 +13,9 @@
     <ProjectReference Include="..\PKShop.Common.Bus\PKShop.Common.Bus.csproj" />
     <ProjectReference Include="..\PKShop.Core\PKShop.Core.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Factories\" />
+  </ItemGroup>
 
 </Project>
