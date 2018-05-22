@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using AutoMapper;
 using PKShop.Struct.Services.Mappers;
 using PKShop.Struct.Services.Services;
 using System.Reflection;

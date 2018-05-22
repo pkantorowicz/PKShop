@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -16,6 +15,7 @@ using PKShop.Common.Identity.Data;
 using PKShop.Common.Identity.Models;
 using PKShop.Domain;
 using PKShop.Struct.WriteData.Context;
+using PKShop.Web.Extensions;
 using System;
 using System.Reflection;
 
@@ -66,7 +66,7 @@ namespace PKShop.Web
             services.AddMvc();
 
             services.AddMediatR(typeof(Startup));
-            services.AddAutoMapper();
+            services.AddAutoMapperSetup();
 
             var builder = new ContainerBuilder();
 
@@ -98,6 +98,7 @@ namespace PKShop.Web
             }
 
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
