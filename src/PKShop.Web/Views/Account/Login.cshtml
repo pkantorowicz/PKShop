@@ -1,9 +1,6 @@
-﻿@using System.Collections.Generic
-@using System.Linq
-@using Microsoft.AspNetCore.Http
-@using Microsoft.AspNetCore.Http.Authentication
+﻿@using System.Linq
 @model PKShop.Common.Identity.Models.AccountViewModels.LoginViewModel
-@inject SignInManager<ApplicationUser> SignInManager
+@inject Microsoft.AspNetCore.Identity.SignInManager<PKShop.Common.Identity.Models.ApplicationUser> SignInManager
 
 @{
     ViewData["Title"] = "Log in";
