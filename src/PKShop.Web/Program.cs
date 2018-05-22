@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace PKShop.Web
 {
@@ -7,12 +8,30 @@ namespace PKShop.Web
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
-        }
-
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var env = hostingContext.HostingEnvironment;
+                    config.SetBasePath(env.ContentRootPath)
+                        .AddJsonFile("appsettings.json", reloadOnChange: true, optional: false)
+                        .AddJsonFile($"appsettings.{env}.json", optional: true)
+                        .AddEnvironmentVariables();
+                })
+                .ConfigureLogging((hostingContext, logging) =>
+                {
+                    //logging.AddDebug();
+                    //logging.AddConsole();
+                })
+                .UseIISIntegration()
+                .UseDefaultServiceProvider((context, options) =>
+                {
+                    options.ValidateScopes = context.HostingEnvironment.IsDevelopment();
+                })
                 .UseStartup<Startup>()
                 .Build();
+            host.Run();
+        }
     }
 }

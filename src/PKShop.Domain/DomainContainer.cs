@@ -21,7 +21,7 @@ namespace PKShop.Domain
 
             builder.RegisterType<DomainNotificationHandler>().As<INotificationHandler<DomainNotification>>();
             builder.RegisterType<ProductEventHandler>().As<INotificationHandler<ProductCreatedEvent>>();
-            builder.RegisterType<ProductEventHandler>().As<INotificationHandler<ProductCodeUpdatedEvent>>();
+            builder.RegisterType<ProductEventHandler>().As<INotificationHandler<ProductUpdatedEvent>>();
             builder.RegisterType<ProductEventHandler>().As<INotificationHandler<ProductDeletedEvent>>();
 
             builder.RegisterType<ProductCommandHandler>().As<INotificationHandler<CreateNewProductCommand>>();

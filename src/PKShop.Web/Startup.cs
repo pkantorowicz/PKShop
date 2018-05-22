@@ -2,13 +2,20 @@
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PKShop.Common.Bus;
 using PKShop.Common.Identity;
+using PKShop.Common.Identity.Data;
+using PKShop.Common.Identity.Models;
 using PKShop.Domain;
+using PKShop.Struct.WriteData.Context;
 using System;
 using System.Reflection;
 
@@ -26,6 +33,36 @@ namespace PKShop.Web
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<PKShopContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<EventStoreContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(o =>
+                {
+                    o.LoginPath = new PathString("/login");
+                    o.AccessDeniedPath = new PathString("/home/access-denied");
+                })
+                .AddFacebook(o =>
+                {
+                    o.AppId = Configuration["Authentication:Facebook:AppId"];
+                    o.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                })
+                .AddGoogle(googleOptions =>
+                {
+                    googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                    googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                });
+
             services.AddMvc();
 
             services.AddMediatR(typeof(Startup));
@@ -41,11 +78,14 @@ namespace PKShop.Web
             IndentityContainer.Load(builder);
             ServicesContainer.Load(builder);
             DataContainer.Load(builder);
+            builder.Populate(services);
+            Container = builder.Build();
 
             return new AutofacServiceProvider(Container);
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,
+            IApplicationLifetime applicationLifetime)
         {
             if (env.IsDevelopment())
             {
@@ -65,6 +105,8 @@ namespace PKShop.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            applicationLifetime.ApplicationStopped.Register(() => Container.Dispose());
         }
     }
 }

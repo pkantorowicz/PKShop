@@ -1,13 +1,12 @@
 ﻿using PKShop.Domain.Exceptions;
 using PKShop.Domain.DomainClasses.Abstract;
 using System;
-using System.Collections.Generic;
 
 namespace PKShop.Domain.DomainClasses.Products
 {
     public class Product : BaseEntity
     {
-        private List<Return> _returns = new List<Return>();
+        //private List<Return> _returns = new List<Return>();
 
         public Guid Id { get; protected set; }
         public string Name { get; protected set; }
@@ -16,9 +15,9 @@ namespace PKShop.Domain.DomainClasses.Products
         public bool Active { get; protected set; }
         public int Quantity { get; protected set; }
         public decimal Cost { get; protected set; }
-        public ProductCode Code { get; protected set; }
-        public Category Category { get; protected set; }
-        public IEnumerable<Return> Returns => _returns.AsReadOnly();
+        //public ProductCode Code { get; protected set; }
+        //public Category Category { get; protected set; }
+        //public IEnumerable<Return> Returns => _returns.AsReadOnly();
 
         protected Product()
         {
@@ -43,8 +42,8 @@ namespace PKShop.Domain.DomainClasses.Products
             Active = true;
             Quantity = quantity;
             Cost = cost;
-            Code = code;
-            Category = category;
+            //Code = code;
+            //Category = category;
             UpdatedAt = DateTime.UtcNow;
             CreatedAt = DateTime.UtcNow;
         }

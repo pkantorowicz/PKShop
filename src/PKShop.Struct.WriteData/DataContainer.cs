@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using PKShop.Core.Events;
 using PKShop.Domain.Interfaces;
+using PKShop.Struct.WriteData.Context;
 using PKShop.Struct.WriteData.EventSourcing;
 using PKShop.Struct.WriteData.Repositories;
 using PKShop.Struct.WriteData.UnitOfWork;
@@ -24,8 +25,10 @@ namespace PKShop.Domain
                    .InstancePerLifetimeScope();
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
+            builder.RegisterType<PKShopContext>().InstancePerRequest();
 
             builder.RegisterType<EventStoreRepository>().As<IEventStoreRepository>();
+            builder.RegisterType<EventStoreContext>().InstancePerRequest();
             builder.RegisterType<SqlEventStore>().As<IEventStore>();           
         }
     }

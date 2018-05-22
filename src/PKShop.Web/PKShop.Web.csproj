@@ -22,4 +22,8 @@
     <ProjectReference Include="..\PKShop.Struct.WriteData\PKShop.Struct.WriteData.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="bin\Debug\netcoreapp2.0\" />
+  </ItemGroup>
+
 </Project>
