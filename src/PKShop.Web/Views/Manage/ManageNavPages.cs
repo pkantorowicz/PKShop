@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
-namespace Equinox.UI.Site.Views.Manage
+namespace PKShop.Web.Views.Manage
 {
     public static class ManageNavPages
     {

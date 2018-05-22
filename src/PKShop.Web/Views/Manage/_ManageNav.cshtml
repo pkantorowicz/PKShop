@@ -1,4 +1,4 @@
-﻿@using Equinox.UI.Site.Views.Manage
+﻿@using PKShop.Web.Views.Manage
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
