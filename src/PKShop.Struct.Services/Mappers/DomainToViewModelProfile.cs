@@ -4,9 +4,9 @@ using PKShop.Struct.Services.ViewModels;
 
 namespace PKShop.Struct.Services.Mappers
 {
-    public class DomainToDtoProfile : Profile
+    public class DomainToViewModelProfile : Profile
     {
-        public DomainToDtoProfile()
+        public DomainToViewModelProfile()
         {
             CreateMap<Product, ProductViewModel>();
         }
