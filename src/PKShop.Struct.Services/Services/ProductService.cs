@@ -36,15 +36,15 @@ namespace PKShop.Struct.Services.Services
         public async Task<IEnumerable<ProductHistoryData>> GetHistoryDataAsync(Guid id)
             => ProductHistory.ProductHistoryToJson(await _eventStoreRepository.AllAsync(id));
 
-        public async Task CreateAsync(ProductViewModel product)
+        public async Task CreateAsync(ProductViewModel productVM)
         {
-            var createCommand = _mapper.Map<CreateNewProductCommand>(product);
+            var createCommand = _mapper.Map<CreateNewProductCommand>(productVM);
             await _bus.SendCommand(createCommand);
         }
 
-        public async Task UpdateAsync(ProductViewModel product)
+        public async Task UpdateAsync(ProductViewModel productVM)
         {
-            var updateCommand = _mapper.Map<UpdateProductCommand>(product);
+            var updateCommand = _mapper.Map<UpdateProductCommand>(productVM);
             await _bus.SendCommand(updateCommand);
         }
 

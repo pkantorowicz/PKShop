@@ -3,7 +3,7 @@ using MediatR;
 
 namespace PKShop.Core.Events
 {
-    public class Message : INotification
+    public class Message : IRequest
     {
         public string MessageType { get; protected set; }
         public Guid AggregateId { get; protected set; }

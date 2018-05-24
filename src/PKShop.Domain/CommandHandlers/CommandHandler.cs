@@ -2,6 +2,7 @@ using MediatR;
 using PKShop.Core.Bus;
 using PKShop.Core.Notifications;
 using PKShop.Domain.Interfaces;
+using System.Threading.Tasks;
 
 namespace PKShop.Domain.CommandHandlers
 {
@@ -18,13 +19,12 @@ namespace PKShop.Domain.CommandHandlers
             _bus = bus;
         }
 
-        public bool Commit()
+        public async Task<bool> CommitAsync()
         {
             if (_notifications.HasNotifications()) return false;
-            var commandResponse = _uow.Commit();
-            if (commandResponse.Success) return true;
+            if (await _uow.CommitAsync()) return true;
 
-            _bus.RaiseEvent(new DomainNotification("Commit", "We had a problem during saving your data."));
+            await _bus.RaiseEvent(new DomainNotification("Commit", "We had a problem during saving your data."));
             return false;
         }
     }

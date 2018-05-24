@@ -1,3 +1,5 @@
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using PKShop.Domain.DomainClasses.Products;
 using PKShop.Domain.Interfaces;
 using PKShop.Struct.WriteData.Context;

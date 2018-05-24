@@ -19,14 +19,13 @@ namespace PKShop.Domain
                    .AsImplementedInterfaces()
                    .InstancePerLifetimeScope();
 
-            builder.RegisterType<DomainNotificationHandler>().As<INotificationHandler<DomainNotification>>();
-            builder.RegisterType<ProductEventHandler>().As<INotificationHandler<ProductCreatedEvent>>();
-            builder.RegisterType<ProductEventHandler>().As<INotificationHandler<ProductUpdatedEvent>>();
-            builder.RegisterType<ProductEventHandler>().As<INotificationHandler<ProductDeletedEvent>>();
+            builder.RegisterAssemblyTypes(domainAssembly)
+                .Where(x => x.Name.EndsWith("Handler"))
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope();
 
-            builder.RegisterType<ProductCommandHandler>().As<INotificationHandler<CreateNewProductCommand>>();
-            builder.RegisterType<ProductCommandHandler>().As<INotificationHandler<UpdateProductCommand>>();
-            builder.RegisterType<ProductCommandHandler>().As<INotificationHandler<DeleteProductCommand>>();
+            builder.RegisterType<DomainNotificationHandler>()
+                   .As<INotificationHandler<DomainNotification>>();
         }
     }
 }

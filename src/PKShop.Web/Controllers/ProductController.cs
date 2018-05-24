@@ -45,7 +45,7 @@ namespace PKShop.Web.Controllers
             {
                 ViewBag.Success = "Product Created!";
             }
-            return View(productVM);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

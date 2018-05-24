@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using MediatR;
 
 namespace PKShop.Core.Notifications
@@ -13,9 +15,11 @@ namespace PKShop.Core.Notifications
             _notifications = new List<DomainNotification>();
         }
 
-        public void Handle(DomainNotification message)
+        public Task Handle(DomainNotification message, CancellationToken cancellationToken)
         {
             _notifications.Add(message);
+
+            return Task.CompletedTask;
         }
 
         public virtual List<DomainNotification> GetNotifications()

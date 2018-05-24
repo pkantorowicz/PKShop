@@ -64,7 +64,8 @@ namespace PKShop.Web
                 });
 
             services.AddMvc();
-
+            services.AddScoped<SingleInstanceFactory>(x => y => x.GetService(y));
+            
             services.AddMediatR(typeof(Startup));
             services.AddAutoMapperSetup();
 

@@ -1,10 +1,11 @@
 using System;
-using PKShop.Core.Commands;
+using System.Threading.Tasks;
 
 namespace PKShop.Domain.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        CommandResponse Commit();
+        bool Commit();
+        Task<bool> CommitAsync();
     }
 }
