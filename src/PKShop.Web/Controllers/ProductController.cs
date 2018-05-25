@@ -105,7 +105,7 @@ namespace PKShop.Web.Controllers
                 return View(await _productservice.GetAsync(id));
             }
             ViewBag.Success = "Product removed!";
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
         [Route("products/history/{id:guid}")]

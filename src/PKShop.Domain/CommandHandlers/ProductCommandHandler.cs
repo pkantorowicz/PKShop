@@ -72,7 +72,7 @@ namespace PKShop.Domain.CommandHandlers
 
                 if (await CommitAsync())
                 {
-                    await _bus.RaiseEvent(new ProductCodeDeletedEvent(command.Id));
+                    await _bus.RaiseEvent(new ProductDeletedEvent(command.Id));
                 }
             }
         }

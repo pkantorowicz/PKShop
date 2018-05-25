@@ -95,14 +95,14 @@
     {
     <script type="text/javascript">
         $(".viewbutton").on("click", function() {
-            var customerId = $(this).data('id');
+            var productid = $(this).data('id');
             $.ajax({
-                url: "http://localhost:52346/customer-management/customer-history/" + customerId,
+                url: "http://localhost:64936/products/history/" + productid,
                 //url: "http://equinoxproject.azurewebsites.net/customer-management/customer-history/" + customerId,
                 cache: false
             }).done(function(data) {
                 var formatHtml = "<table class='table table-striped'>";
-                formatHtml += "<thead><th>Action</th><th>When</th><th>Id</th><th>Name</th><th>E-mail</th><th>Birth Date</th><th>By User</th></thead>";
+                formatHtml += "<thead><th>Action</th><th>When</th><th>Id</th><th>Name</th><th>Quantity</th><th>Cost</th><th>By User</th></thead>";
 
                 for (var i = 0; i < data.length; i++) {
                     var change = data[i];
@@ -111,8 +111,8 @@
                     formatHtml += "<td>" + change.when + "</td>";
                     formatHtml += "<td>" + change.id + "</td>";
                     formatHtml += "<td>" + change.name + "</td>";
-                    formatHtml += "<td>" + change.email + "</td>";
-                    formatHtml += "<td>" + change.birthDate + "</td>";
+                    formatHtml += "<td>" + change.quantity + "</td>";
+                    formatHtml += "<td>" + change.cost + "</td>";
                     formatHtml += "<td>" + change.who + "</td>";
                     formatHtml += "</tr>";
                 }
