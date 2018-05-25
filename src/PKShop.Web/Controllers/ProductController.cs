@@ -26,6 +26,16 @@ namespace PKShop.Web.Controllers
             return View(await _productservice.BrowseAsync());
         }
 
+        [HttpGet]   
+        [Route("products/details/{id:guid}")]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            id.CheckForNulls(nameof(id));
+            var product = await _productservice.GetAsync(id);
+            product.CheckForNulls(nameof(product));
+            return View(product);
+        }
+
         [HttpGet]
         [Route("products/create")]
         public IActionResult Create()
@@ -42,7 +52,6 @@ namespace PKShop.Web.Controllers
                 return View(productVM);
             }
             await _productservice.CreateAsync(productVM);
-
             if (IsValidOperation())
             {
                 ViewBag.Success = "Product Created!";
