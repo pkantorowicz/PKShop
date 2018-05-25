@@ -1,16 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.3">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PKShop.Domain\PKShop.Domain.csproj" />
-    <ProjectReference Include="..\PKShop.Struct.WriteData\PKShop.Struct.WriteData.csproj" />
+    <PackageReference Include="AutoMapper" Version="6.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.1.1" />
+    <ProjectReference Include="..\PKShop.Domain\PKShop.Domain.csproj" />
+    <ProjectReference Include="..\PKShop.Struct.WriteData\PKShop.Struct.WriteData.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,6 @@
-
-using PKShop.Core.Commands;
 using PKShop.Domain.Interfaces;
 using PKShop.Struct.WriteData.Context;
+using System.Threading.Tasks;
 
 namespace PKShop.Struct.WriteData.UnitOfWork
 {
@@ -14,10 +13,14 @@ namespace PKShop.Struct.WriteData.UnitOfWork
             _context = context;
         }
 
-        public CommandResponse Commit()
+        public bool Commit()
         {
-            var rowsAffected = _context.SaveChanges();
-            return new CommandResponse(rowsAffected > 0);
+            return _context.SaveChanges() > 0;
+        }
+
+        public async Task<bool> CommitAsync()
+        {
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public void Dispose()

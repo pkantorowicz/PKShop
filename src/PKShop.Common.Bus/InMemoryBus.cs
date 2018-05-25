@@ -17,22 +17,16 @@ namespace PKShop.Common.Bus
             _mediator = mediator;
         }
 
-        public Task SendCommand<T>(T command) where T : Command
-        {
-            return Publish(command);
-        }
+        public async Task SendCommand<T>(T command) where T : Command
+            => await _mediator.Send(command);
+        
 
-        public Task RaiseEvent<T>(T @event) where T : Event
+        public async Task RaiseEvent<T>(T @event) where T : Event
         {
             if (!@event.MessageType.Equals("DomainNotification"))
                 _eventStore?.Save(@event);
 
-            return Publish(@event);
-        }
-
-        private Task Publish<T>(T message) where T : Message
-        {
-            return _mediator.Publish(message);
+            await _mediator.Publish(@event);
         }
     }
 }

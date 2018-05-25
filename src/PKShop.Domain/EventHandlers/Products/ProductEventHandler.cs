@@ -1,5 +1,7 @@
 using MediatR;
 using PKShop.Domain.Events.Products;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace PKShop.Domain.EventHandlers.Products
 {
@@ -8,19 +10,25 @@ namespace PKShop.Domain.EventHandlers.Products
         INotificationHandler<ProductUpdatedEvent>,
         INotificationHandler<ProductDeletedEvent>
     {
-        public void Handle(ProductCreatedEvent message)
+        public Task Handle(ProductCreatedEvent message, CancellationToken cancellationToken)
         {
-            //todo
+            // Send some notification e-mail
+
+            return Task.CompletedTask;
         }
 
-        public void Handle(ProductUpdatedEvent message)
+        public Task Handle(ProductUpdatedEvent message, CancellationToken cancellationToken)
         {
-            //todo
+            // Send some greetings e-mail
+
+            return Task.CompletedTask;
         }
 
-        public void Handle(ProductDeletedEvent message)
+        public Task Handle(ProductDeletedEvent message, CancellationToken cancellationToken)
         {
-            //todo
+            // Send some see you soon e-mail
+
+            return Task.CompletedTask;
         }
     }
 }

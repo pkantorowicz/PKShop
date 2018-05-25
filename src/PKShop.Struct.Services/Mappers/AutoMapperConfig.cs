@@ -8,8 +8,8 @@ namespace PKShop.Struct.Services.Mappers
         {
             return new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new DomainToDtoProfile());
-                cfg.AddProfile(new DtoToDomainProfile());
+                cfg.AddProfile(new DomainToViewModelProfile());
+                cfg.AddProfile(new ViewModelToDomainProfile());
             });
         }
     }

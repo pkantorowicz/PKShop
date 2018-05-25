@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using PKShop.Core.Events;
-using PKShop.Domain.DomainClasses.Identity;
 using PKShop.Domain.Interfaces;
 
 namespace PKShop.Struct.WriteData.EventSourcing
@@ -8,9 +7,9 @@ namespace PKShop.Struct.WriteData.EventSourcing
     public class SqlEventStore : IEventStore
     {
         private readonly IEventStoreRepository _eventStoreRepository;
-        private readonly User _user;
+        private readonly IUser _user;
 
-        public SqlEventStore(IEventStoreRepository eventStoreRepository, User user)
+        public SqlEventStore(IEventStoreRepository eventStoreRepository, IUser user)
         {
             _eventStoreRepository = eventStoreRepository;
             _user = user;
@@ -23,7 +22,7 @@ namespace PKShop.Struct.WriteData.EventSourcing
             var storedEvent = new StoredEvent(
                 theEvent,
                 serializedData,
-                _user.Username);
+                _user.Name);
 
             _eventStoreRepository.Store(storedEvent);
         }
