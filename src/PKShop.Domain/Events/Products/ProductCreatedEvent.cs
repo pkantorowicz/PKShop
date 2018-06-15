@@ -17,7 +17,7 @@ namespace PKShop.Domain.Events.Products
             Name = name;
             Quantity = quantity;
             Cost = cost;
-            AggregateId = AggregateId;
+            AggregateId = id;
         }
     }
 }

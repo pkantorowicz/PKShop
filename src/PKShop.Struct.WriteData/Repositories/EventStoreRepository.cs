@@ -26,7 +26,7 @@ namespace PKShop.Struct.WriteData.Repositories
 
         public void Store(StoredEvent theEvent)
         {
-            _context.StoredEvent.Add(theEvent);
+            _context.StoredEvent.AddAsync(theEvent);
             _context.SaveChanges();
         }
 

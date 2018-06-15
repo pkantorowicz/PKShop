@@ -34,7 +34,7 @@ namespace PKShop.Domain.CommandHandlers
 
                 if (productFromDb != null)
                 {
-                    await _bus.RaiseEvent(new DomainNotification(command.MessageType, "Product with this email already exists."));
+                    await _bus.RaiseEvent(new DomainNotification(command.MessageType, "Product with this name already exists."));
                     return;
                 }
                 await _productRepository.CreateAsync(product);
@@ -50,9 +50,9 @@ namespace PKShop.Domain.CommandHandlers
                 var product = new Product(Guid.NewGuid(), command.Name, command.Quantity, command.Cost);
                 var existingProduct = await _productRepository.GetAsync(product.Id);
 
-                if (existingProduct != null)
+                if (existingProduct != null && existingProduct.Id != product.Id)
                 {
-                    if (existingProduct.Equals(product))
+                    if (!existingProduct.Equals(product))
                     {
                         await _bus.RaiseEvent(new DomainNotification(command.MessageType, "This product already exists in shop."));
                         return;

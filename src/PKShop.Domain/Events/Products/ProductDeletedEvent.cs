@@ -10,7 +10,7 @@ namespace PKShop.Domain.Events.Products
         public ProductDeletedEvent(Guid id)
         {
             Id = id;
-            AggregateId = AggregateId;
+            AggregateId = id;
         }
     }
 }

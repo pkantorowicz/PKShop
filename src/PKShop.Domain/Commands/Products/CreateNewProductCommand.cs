@@ -1,5 +1,3 @@
-using System;
-
 namespace PKShop.Domain.Commands.Products
 {
     public class CreateNewProductCommand : ProductCommand

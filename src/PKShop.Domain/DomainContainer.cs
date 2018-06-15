@@ -1,10 +1,6 @@
 ﻿using Autofac;
 using MediatR;
 using PKShop.Core.Notifications;
-using PKShop.Domain.CommandHandlers;
-using PKShop.Domain.Commands.Products;
-using PKShop.Domain.EventHandlers.Products;
-using PKShop.Domain.Events.Products;
 using System.Reflection;
 
 namespace PKShop.Domain
