@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/PKShop.Service/PKShop.Service.csproj"
+                "${workspaceFolder}/src/PKShop.Web/PKShop.Web.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

@@ -47,22 +47,13 @@ namespace PKShop.Domain.CommandHandlers
 
             public async Task Handle(UpdateProductCommand command, CancellationToken cancellationToken)
             {
-                var product = new Product(Guid.NewGuid(), command.Name, command.Quantity, command.Cost);
-                var existingProduct = await _productRepository.GetAsync(product.Id);
+                var productToEdit = await _productRepository.GetAsync(x => x.Name == command.Name);              
 
-                if (existingProduct != null && existingProduct.Id != product.Id)
-                {
-                    if (!existingProduct.Equals(product))
-                    {
-                        await _bus.RaiseEvent(new DomainNotification(command.MessageType, "This product already exists in shop."));
-                        return;
-                    }
-                }
-                _productRepository.Update(product);
+                _productRepository.Update(productToEdit);
 
                 if (await CommitAsync())
                 {
-                   await _bus.RaiseEvent(new ProductUpdatedEvent(product.Id, product.Name, product.Quantity, product.Cost));
+                   await _bus.RaiseEvent(new ProductUpdatedEvent(productToEdit.Id, productToEdit.Name, productToEdit.Quantity, productToEdit.Cost));
                 }
             }
 

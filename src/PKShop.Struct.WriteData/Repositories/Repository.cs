@@ -28,10 +28,10 @@ namespace PKShop.Struct.WriteData.Repositories
             => _entity.Find(id);
 
         public async Task<T> GetAsync(Expression<Func<T, bool>> predicate)
-            => await _entity.FindAsync(predicate);
+            => await _entity.SingleOrDefaultAsync(predicate);
 
         public T Get(Expression<Func<T, bool>> predicate)
-            => _entity.Find(predicate);
+            => _entity.SingleOrDefault(predicate);
 
         public async Task<IEnumerable<T>> BrowseAsync()
             => await _entity.ToListAsync();
