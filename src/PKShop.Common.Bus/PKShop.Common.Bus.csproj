@@ -1,18 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.3">
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.3">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PKShop.Core\PKShop.Core.csproj" />
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
+    <PackageReference Include="mediatr" Version="5.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.6.2" />
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
-    <PackageReference Include="mediatr" Version="4.1.0" />
+    <ProjectReference Include="..\PKShop.Core\PKShop.Core.csproj" />
   </ItemGroup>
-  
+
 </Project>
 

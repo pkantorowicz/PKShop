@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PKShop.Domain.DomainClasses.Products;
 using PKShop.Struct.WriteData.EntityMappings;
 
-namespace PKShop.Struct.WriteData.Context
+namespace PKShop.Struct.WriteData.Contexts
 {
     public class PKShopContext : DbContext
     {

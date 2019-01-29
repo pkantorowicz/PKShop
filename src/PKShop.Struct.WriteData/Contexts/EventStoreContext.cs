@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PKShop.Core.Events;
 using PKShop.Struct.WriteData.EntityMappings;
 
-namespace PKShop.Struct.WriteData.Context
+namespace PKShop.Struct.WriteData.Contexts
 {
     public class EventStoreContext : DbContext
     {

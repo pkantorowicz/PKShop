@@ -27,7 +27,7 @@ namespace PKShop.Domain.CommandHandlers
                 _bus = bus;
             }
 
-            public async Task Handle(CreateNewProductCommand command, CancellationToken cancellationToken)
+            public async Task<Unit> Handle(CreateNewProductCommand command, CancellationToken cancellationToken)
             {
                 var product = new Product(Guid.NewGuid(), command.Name, command.Quantity, command.Cost);
                 var productFromDb = await _productRepository.GetAsync(product.Id);
@@ -35,7 +35,7 @@ namespace PKShop.Domain.CommandHandlers
                 if (productFromDb != null)
                 {
                     await _bus.RaiseEvent(new DomainNotification(command.MessageType, "Product with this name already exists."));
-                    return;
+                    return Unit.Value;
                 }
                 await _productRepository.CreateAsync(product);
 
@@ -43,9 +43,11 @@ namespace PKShop.Domain.CommandHandlers
                 {
                     await _bus.RaiseEvent(new ProductCreatedEvent(product.Id, product.Name, product.Quantity, product.Cost));
                 }
-            }
 
-            public async Task Handle(UpdateProductCommand command, CancellationToken cancellationToken)
+                return Unit.Value;
+        }
+
+            public async Task<Unit> Handle(UpdateProductCommand command, CancellationToken cancellationToken)
             {
                 var productToEdit = await _productRepository.GetAsync(x => x.Name == command.Name);              
 
@@ -55,9 +57,11 @@ namespace PKShop.Domain.CommandHandlers
                 {
                    await _bus.RaiseEvent(new ProductUpdatedEvent(productToEdit.Id, productToEdit.Name, productToEdit.Quantity, productToEdit.Cost));
                 }
+
+                return Unit.Value;
             }
 
-            public async Task Handle(DeleteProductCommand command, CancellationToken cancellationToken)
+            public async Task<Unit> Handle(DeleteProductCommand command, CancellationToken cancellationToken)
             {
                 _productRepository.Delete(command.Id);
 
@@ -65,6 +69,8 @@ namespace PKShop.Domain.CommandHandlers
                 {
                     await _bus.RaiseEvent(new ProductDeletedEvent(command.Id));
                 }
+
+                return Unit.Value;
             }
         }
 }

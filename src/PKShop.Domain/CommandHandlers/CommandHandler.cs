@@ -21,8 +21,11 @@ namespace PKShop.Domain.CommandHandlers
 
         public async Task<bool> CommitAsync()
         {
-            if (_notifications.HasNotifications()) return false;
-            if (await _uow.CommitAsync()) return true;
+            if (_notifications.HasNotifications())
+                return false;
+
+            if (await _uow.CommitAsync())
+                return true;
 
             await _bus.RaiseEvent(new DomainNotification("Commit", "We had a problem during saving your data."));
             return false;

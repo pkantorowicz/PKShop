@@ -14,10 +14,10 @@ using PKShop.Common.Identity;
 using PKShop.Common.Identity.Data;
 using PKShop.Common.Identity.Models;
 using PKShop.Domain;
-using PKShop.Struct.WriteData.Context;
 using PKShop.Web.Extensions;
 using System;
 using System.Reflection;
+using PKShop.Struct.WriteData.Contexts;
 
 namespace PKShop.Web
 {
@@ -64,8 +64,8 @@ namespace PKShop.Web
                 });
 
             services.AddMvc();
-            services.AddScoped<SingleInstanceFactory>(x => y => x.GetService(y));
-            
+            services.AddScoped<ServiceFactory>(x => x.GetService);
+
             services.AddMediatR(typeof(Startup));
             services.AddAutoMapperSetup();
 
@@ -91,7 +91,6 @@ namespace PKShop.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
             }
             else
             {

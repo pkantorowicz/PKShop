@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PKShop.Domain.DomainClasses.Abstract;
 using PKShop.Domain.Interfaces;
-using PKShop.Struct.WriteData.Context;
+using PKShop.Struct.WriteData.Contexts;
 
 namespace PKShop.Struct.WriteData.Repositories
 {

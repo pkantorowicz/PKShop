@@ -7,7 +7,7 @@ namespace PKShop.Core.Events
     {
         public DateTime Timestamp { get; set; }
 
-        public Event()
+        protected Event()
         {
             Timestamp = DateTime.UtcNow;
         }

@@ -2,10 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
-using PKShop.Struct.WriteData.Context;
+using PKShop.Struct.WriteData.Contexts;
 using System;
 
 namespace PKShop.Struct.WriteData.Migrations

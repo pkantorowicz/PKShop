@@ -1,4 +1,5 @@
 using System;
+using MediatR;
 using PKShop.Core.Events;
 
 namespace PKShop.Core.Notifications
