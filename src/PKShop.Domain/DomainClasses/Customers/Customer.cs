@@ -46,12 +46,12 @@ namespace PKShop.Domain.DomainClasses.Customers
         {
             if (String.IsNullOrEmpty(firstName))
             {
-                throw new PKShopException(ErrorCodes.InvalidFirstName,
+                throw new PKShopException(Codes.InvalidFirstName,
                     "Firstname is invalid.");
             }
             if (firstName.Length > 50)
             {
-                throw new PKShopException(ErrorCodes.InvalidFirstName,
+                throw new PKShopException(Codes.InvalidFirstName,
                     "Firstname cannot be longer than 50 characters");
             }
 
@@ -63,12 +63,12 @@ namespace PKShop.Domain.DomainClasses.Customers
         {
             if (String.IsNullOrEmpty(lastName))
             {
-                throw new PKShopException(ErrorCodes.InvalidLastName,
+                throw new PKShopException(Codes.InvalidLastName,
                     "LastName is invalid.");
             }
             if (lastName.Length > 50)
             {
-                throw new PKShopException(ErrorCodes.InvalidLastName,
+                throw new PKShopException(Codes.InvalidLastName,
                     "LastName cannot be longer than 50 characters");
             }
 
@@ -80,12 +80,12 @@ namespace PKShop.Domain.DomainClasses.Customers
         {
             if (string.IsNullOrWhiteSpace(email))
             {
-                throw new PKShopException(ErrorCodes.InvalidEmail,
+                throw new PKShopException(Codes.InvalidEmail,
                     "Email can not be empty.");
             }
             if (!EmailRegex.IsMatch(email) || !email.Contains("@"))
             {
-                throw new PKShopException(ErrorCodes.InvalidEmail,
+                throw new PKShopException(Codes.InvalidEmail,
                     $"Invalid email: '{email}'.");
             }
             if (Email == email)
@@ -101,12 +101,12 @@ namespace PKShop.Domain.DomainClasses.Customers
         {
             if (String.IsNullOrEmpty(companyName))
             {
-                throw new PKShopException(ErrorCodes.InvalidCompanyName,
+                throw new PKShopException(Codes.InvalidCompanyName,
                     "CompanyName is invalid.");
             }
             if (companyName.Length > 100)
             {
-                throw new PKShopException(ErrorCodes.InvalidCompanyName,
+                throw new PKShopException(Codes.InvalidCompanyName,
                     "CompanyName cannot be longer than 100 characters");
             }
 
@@ -118,7 +118,7 @@ namespace PKShop.Domain.DomainClasses.Customers
         {
             if (balance < 0)
             {
-                throw new PKShopException(ErrorCodes.InvalidBalance,
+                throw new PKShopException(Codes.InvalidBalance,
                     "Balance can not be smaller than 0.");
             }
             if (Balance == balance)
@@ -135,7 +135,7 @@ namespace PKShop.Domain.DomainClasses.Customers
             var card = CreditCards.SingleOrDefault(x => x.CardNumber == cardNumber);
             if (card != null)
             {
-                throw new PKShopException(ErrorCodes.CreditCardAlreadyExists,
+                throw new PKShopException(Codes.CreditCardAlreadyExists,
                     $"Card with this number: {cardNumber} already exists.");
             }
             _creditCards.Add(CreditCard.Create(nameOnCard, cardNumber, expiry, active, customer));
@@ -147,7 +147,7 @@ namespace PKShop.Domain.DomainClasses.Customers
             var card = CreditCards.SingleOrDefault(x => x.CardNumber == cardNumber);
             if (card == null)
             {
-                throw new PKShopException(ErrorCodes.CreditCardNotFound,
+                throw new PKShopException(Codes.CreditCardNotFound,
                     $"Credit card with number: {cardNumber} for customer: {FirstName} was not found.");
             }
             _creditCards.Remove(card);

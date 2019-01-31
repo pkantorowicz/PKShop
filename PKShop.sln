@@ -24,6 +24,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3471C658-A097-48C2-B1FA-10EF9A23FA7B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{E247EEB0-DE1E-4C2C-A9FF-729668511EC6}"
+ProjectSection(SolutionItems) = preProject
+	scripts\dotnet-add-migrations.sh = scripts\dotnet-add-migrations.sh
+	scripts\dotnet-databse-update.sh = scripts\dotnet-databse-update.sh
+	scripts\dotnet-add-migrations-event-store.sh = scripts\dotnet-add-migrations-event-store.sh
+	scripts\dotnet-add-migrations-identity.sh = scripts\dotnet-add-migrations-identity.sh
+	scripts\dotnet-add-migrations-pkshop.sh = scripts\dotnet-add-migrations-pkshop.sh
+EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PKShop.Tests", "tests\PKShop.Tests\PKShop.Tests.csproj", "{953B4915-A095-48C8-B270-821B186591BC}"
 EndProject

@@ -23,12 +23,12 @@ namespace PKShop.Domain.DomainClasses.Products
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new PKShopException(ErrorCodes.InvalidProductCategory,
+                throw new PKShopException(Codes.InvalidProductCategory,
                     "CategoryName can not be empty.");
             }
             if (name.Length > 100)
             {
-                throw new PKShopException(ErrorCodes.InvalidProductCategory,
+                throw new PKShopException(Codes.InvalidProductCategory,
                     "CategoryName can not be longer than 100 characters.");
             }
             Name = name;

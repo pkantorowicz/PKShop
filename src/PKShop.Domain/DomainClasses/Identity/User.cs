@@ -39,12 +39,12 @@ namespace PKShop.Domain.DomainClasses.Identity
         {
             if (String.IsNullOrEmpty(username))
             {
-                throw new PKShopException(ErrorCodes.InvalidName, 
+                throw new PKShopException(Codes.InvalidName, 
                     "Username is invalid.");
             }
             if (username.Length > 50)
             {
-                throw new PKShopException(ErrorCodes.InvalidName, 
+                throw new PKShopException(Codes.InvalidName, 
                     "Usename cannot be longer than 50 characters");
             }
 
@@ -56,12 +56,12 @@ namespace PKShop.Domain.DomainClasses.Identity
         {
             if (string.IsNullOrWhiteSpace(email))
             {
-                throw new PKShopException(ErrorCodes.InvalidEmail,
+                throw new PKShopException(Codes.InvalidEmail,
                     "Email can not be empty.");
             }
             if (!EmailRegex.IsMatch(email) || !email.Contains("@"))
             {
-                throw new PKShopException(ErrorCodes.InvalidEmail,
+                throw new PKShopException(Codes.InvalidEmail,
                     $"Invalid email: '{email}'.");
             }
             if (Email == email)
@@ -77,7 +77,7 @@ namespace PKShop.Domain.DomainClasses.Identity
         {
             if (!Identity.Role.IsValid(role))
             {
-                throw new PKShopException(ErrorCodes.InvalidRole,
+                throw new PKShopException(Codes.InvalidRole,
                     $"Invalid role: '{role}'.");
             }
 
@@ -89,7 +89,7 @@ namespace PKShop.Domain.DomainClasses.Identity
         {
             if (string.IsNullOrWhiteSpace(password))
             {
-                throw new PKShopException(ErrorCodes.InvalidPassword,
+                throw new PKShopException(Codes.InvalidPassword,
                     "Password can not be empty.");
             }
 

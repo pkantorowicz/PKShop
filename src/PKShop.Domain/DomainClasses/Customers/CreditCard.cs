@@ -32,12 +32,12 @@ namespace PKShop.Domain.DomainClasses.Customers
         {
             if (string.IsNullOrEmpty(nameOfCard))
             {
-                throw new PKShopException(ErrorCodes.InvalidNameOnCard,
+                throw new PKShopException(Codes.InvalidNameOnCard,
                     "Name of card can not be empty.");
             }
             if (nameOfCard.Length > 50)
             {
-                throw new PKShopException(ErrorCodes.InvalidNameOnCard,
+                throw new PKShopException(Codes.InvalidNameOnCard,
                     "Name of card can not be longer than 50 characters.");
             }
 
@@ -48,7 +48,7 @@ namespace PKShop.Domain.DomainClasses.Customers
         {
             if (string.IsNullOrEmpty(cardNumber))
             {
-                throw new PKShopException(ErrorCodes.InvalidCardNumber,
+                throw new PKShopException(Codes.InvalidCardNumber,
                     "Card number can not be empty.");
             }
 
@@ -61,7 +61,7 @@ namespace PKShop.Domain.DomainClasses.Customers
             {
                 active = false;
 
-                throw new PKShopException(ErrorCodes.CardExpired,
+                throw new PKShopException(Codes.CardExpired,
                     "This card was expired.");
             }
             active = true;
@@ -77,7 +77,7 @@ namespace PKShop.Domain.DomainClasses.Customers
 
             if (customer.CreditCards.Contains(creditCard))
             {
-                throw new PKShopException(ErrorCodes.CreditCardAlreadyExists,
+                throw new PKShopException(Codes.CreditCardAlreadyExists,
                     "Credit card already exsists for this customer.");
             }
             return creditCard;

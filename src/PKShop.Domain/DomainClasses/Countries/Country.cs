@@ -26,12 +26,12 @@ namespace PKShop.Domain.DomainClasses.Countries
         {
             if (String.IsNullOrEmpty(name))
             {
-                throw new PKShopException(ErrorCodes.InvalidCountry,
+                throw new PKShopException(Codes.InvalidCountry,
                     "Username is invalid.");
             }
             if (name.Length > 100)
             {
-                throw new PKShopException(ErrorCodes.InvalidCountry,
+                throw new PKShopException(Codes.InvalidCountry,
                     "Usename can not be longer than 100 characters");
             }
             Name = name.ToLowerInvariant();

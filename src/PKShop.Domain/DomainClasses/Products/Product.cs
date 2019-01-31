@@ -15,7 +15,7 @@ namespace PKShop.Domain.DomainClasses.Products
         public bool Active { get; protected set; }
         public int Quantity { get; protected set; }
         public decimal Cost { get; protected set; }
-        //public ProductCode Code { get; protected set; }
+        public ProductCode Code { get; protected set; }
         //public Category Category { get; protected set; }
         //public IEnumerable<Return> Returns => _returns.AsReadOnly();
 
@@ -42,7 +42,7 @@ namespace PKShop.Domain.DomainClasses.Products
             Active = true;
             Quantity = quantity;
             Cost = cost;
-            //Code = code;
+            Code = code;
             //Category = category;
             UpdatedAt = DateTime.UtcNow;
             CreatedAt = DateTime.UtcNow;
@@ -52,14 +52,16 @@ namespace PKShop.Domain.DomainClasses.Products
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new PKShopException(ErrorCodes.InvalidProductName,
+                throw new PKShopException(Codes.InvalidProductName,
                     "CategoryName can not be empty.");
             }
+
             if (name.Length > 100)
             {
-                throw new PKShopException(ErrorCodes.InvalidProductName,
+                throw new PKShopException(Codes.InvalidProductName,
                     "CategoryName can not be longer than 100 characters.");
             }
+
             Name = name;
             UpdatedAt = DateTime.UtcNow;
         }
@@ -68,9 +70,10 @@ namespace PKShop.Domain.DomainClasses.Products
         {
             if (quantity > 1000000 || quantity < 0)
             {
-                throw new PKShopException(ErrorCodes.InvalidProductQuantity,
+                throw new PKShopException(Codes.InvalidProductQuantity,
                     "Quantity can not be greater than 1 000 000 and lower than 0.");
             }
+
             Quantity = quantity;
             UpdatedAt = DateTime.UtcNow;
         }
@@ -79,18 +82,19 @@ namespace PKShop.Domain.DomainClasses.Products
         {
             if (cost > 1000000 || cost < 0)
             {
-                throw new PKShopException(ErrorCodes.InvalidProductCost,
+                throw new PKShopException(Codes.InvalidProductCost,
                     "Cost can not be greater than 1 000 000 and lower than 0.");
             }
+
             Cost = cost;
             UpdatedAt = DateTime.UtcNow;
         }
 
-        public static Product Create(string name, int quantity, decimal cost, ProductCode code, Category category)
-            => Create(Guid.NewGuid(), name, quantity, cost, code, category);
-
-        public static Product Create(Guid id, string name, int quantity, decimal cost,
-            ProductCode code, Category category)
-            => new Product(id, name, quantity, cost, code, category);
+        public void SetProductCode(ProductCode productCode)
+        {
+            Code = productCode ?? throw new PKShopException(Codes.InvalidProductCode,
+                       "Product code can not be empty.");
+            UpdatedAt = DateTime.UtcNow;
+        }
     }
 }

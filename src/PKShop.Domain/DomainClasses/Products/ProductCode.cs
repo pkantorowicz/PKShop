@@ -23,12 +23,12 @@ namespace PKShop.Domain.DomainClasses.Products
         {
             if (String.IsNullOrEmpty(name))
             {
-                throw new PKShopException(ErrorCodes.InvalidProductCode,
+                throw new PKShopException(Codes.InvalidProductCode,
                     "Product code is invalid.");
             }
             if (name.Length > 100)
             {
-                throw new PKShopException(ErrorCodes.InvalidProductCode,
+                throw new PKShopException(Codes.InvalidProductCode,
                     "Product code cannot be longer than 100 characters");
             }
             Name = name.ToLowerInvariant();

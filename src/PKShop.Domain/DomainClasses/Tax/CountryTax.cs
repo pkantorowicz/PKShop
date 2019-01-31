@@ -28,7 +28,7 @@ namespace PKShop.Domain.DomainClasses.Tax
         {
             if (percentage < 0 || percentage > 100)
             {
-                throw new PKShopException(ErrorCodes.InvalidTaxPercentage,
+                throw new PKShopException(Codes.InvalidTaxPercentage,
                     "Tax can not be lower than 0 and greather than 100.");
             }
             Percentage = percentage;
