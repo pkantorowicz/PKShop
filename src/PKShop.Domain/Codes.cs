@@ -19,6 +19,10 @@
         public static string InvalidProductCost => "invalid_product_cost";
         public static string InvalidProductCategory => "invalid_product_category";
         public static string InvalidTaxPercentage => "invalid_tax_percentage";
+
+        public static string CategoryAlreadyExists => "category_already_exists";
+
+        public static string CategoryNotFound => "category_not_found";
         
         public static string CardExpired => "card_was_expired";
         public static string CreditCardAlreadyExists => "credit_card_already_exists";
