@@ -1,5 +1,4 @@
-﻿using PKShop.Domain.Exceptions;
-using PKShop.Domain.DomainClasses.Abstract;
+﻿using PKShop.Domain.DomainClasses.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +12,11 @@ namespace PKShop.Domain.DomainClasses.Products
         private ISet<Category> _categories = new HashSet<Category>();
 
         public string Name { get; protected set; }
-        public bool Active { get; protected set; }
         public int Quantity { get; protected set; }
         public decimal Cost { get; protected set; }
+        public bool IsAvailable => Quantity > 0;
         public ProductCode Code { get; protected set; }
-        public Category Category { get; protected set; }
+        public string Category { get; protected set; }
 
         public IEnumerable<Category> Categories
         {
@@ -39,7 +38,6 @@ namespace PKShop.Domain.DomainClasses.Products
         {
             Id = productId;
             Name = name;
-            Active = true;
             Quantity = quantity;
             Cost = cost;
             CreatedAt = DateTime.UtcNow;
@@ -49,7 +47,6 @@ namespace PKShop.Domain.DomainClasses.Products
         {
             Id = productId;
             Name = name;
-            Active = true;
             Quantity = quantity;
             Cost = cost;
             Code = code;
@@ -140,6 +137,35 @@ namespace PKShop.Domain.DomainClasses.Products
         }
 
         public Category GetCategory(string categoryName)
-            => _categories.SingleOrDefault(x => x.Name == categoryName);
+            => _categories.SingleOrDefault(c => c.Name == categoryName);
+
+        public void AddReturn(Return retun)
+        {
+            _returns.Add(retun);
+            SetUpdatedDate();
+        }
+
+        public void RemoveReturn(Guid returnId)
+        {
+            var @return = GetReturnAndHandle(returnId);
+            _returns.Remove(@return);
+            SetUpdatedDate();
+        }
+
+        public Return GetReturnAndHandle(Guid returnId)
+        {
+            var @return = GetReturn(returnId);
+
+            if (@return == null)
+            {
+                throw new ProductException(Codes.ReturnNotFound,
+                    $"Not found return with id: {returnId}.");
+            }
+
+            return @return;
+        }
+
+        public Return GetReturn(Guid returnId)
+            => _returns.SingleOrDefault(r => r.Id == returnId);
     }
 }

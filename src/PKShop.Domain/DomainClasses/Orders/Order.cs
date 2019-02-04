@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PKShop.Domain.DomainClasses.Orders
 {
-    public class Order : BaseEntity
+    public class Order : EntityBase
     {
         private List<OrderItem> _orderItems = new List<OrderItem>();
 

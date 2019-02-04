@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace PKShop.Domain.DomainClasses.Customers
 {
-    public class Customer : BaseEntity
+    public class Customer : EntityBase
     {
         private static readonly Regex EmailRegex = new Regex(
             @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +

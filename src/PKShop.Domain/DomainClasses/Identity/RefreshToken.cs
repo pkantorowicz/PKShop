@@ -5,7 +5,7 @@ using PKShop.Domain.DomainClasses.Abstract;
 
 namespace PKShop.Domain.DomainClasses.Identity
 {
-    class RefreshToken : BaseEntity
+    class RefreshToken : EntityBase
     {
         public Guid Id { get; protected set; }
         public Guid UserId { get; protected set; }

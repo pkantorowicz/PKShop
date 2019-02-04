@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace PKShop.Domain.DomainClasses.Carts
 {
-    public class Cart : BaseEntity
+    public class Cart : EntityBase
     {
         public List<CartItem> _cartItems = new List<CartItem>();
 

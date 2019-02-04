@@ -6,7 +6,7 @@ using PKShop.Domain.DomainClasses.Abstract;
 
 namespace PKShop.Domain.Interfaces
 {
-    public interface IRepository<T> where T : BaseEntity
+    public interface IRepository<T> where T : EntityBase
     {
         T Get(Guid id);
         Task<T> GetAsync(Guid id);

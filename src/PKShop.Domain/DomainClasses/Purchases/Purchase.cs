@@ -3,7 +3,7 @@ using System;
 
 namespace PKShop.Domain.DomainClasses.Purchases
 {
-    public class Purchase : BaseEntity
+    public class Purchase : EntityBase
     {
         public Guid Id { get; protected set; }
         public Guid CustomerId { get; protected set; }

@@ -5,7 +5,7 @@ using System;
 
 namespace PKShop.Domain.DomainClasses.Tax
 {
-    public class CountryTax : BaseEntity
+    public class CountryTax : EntityBase
     {
         public Guid Id { get; protected set; }
         public Country Country { get; protected set; }

@@ -1,43 +1,33 @@
-﻿using PKShop.Domain.Exceptions;
-using PKShop.Domain.DomainClasses.Abstract;
+﻿using PKShop.Domain.DomainClasses.Abstract;
 using System;
 
 namespace PKShop.Domain.DomainClasses.Products
 {
-    public class ProductCode : BaseEntity
+    public class ProductCode : ValueObject<ProductCode>
     {
-        public Guid Id { get; protected set; }
-        public string Name { get; protected set; }
+        public string Code { get; protected set; }
 
-        public ProductCode()
+        protected ProductCode()
         {
         }
 
-        public ProductCode(Guid id, string name)
+        public ProductCode(string code)
         {
-            Id = id;
-            Name = name;
-        }
-
-        public void SetName(string name)
-        {
-            if (String.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(code) || code.Length > 100)
             {
-                throw new PKShopException(Codes.InvalidProductCode,
-                    "Product code is invalid.");
+                throw new ArgumentException("Product code can not be empty or longer than 100 characters.",
+                    nameof(code));
             }
-            if (name.Length > 100)
-            {
-                throw new PKShopException(Codes.InvalidProductCode,
-                    "Product code cannot be longer than 100 characters");
-            }
-            Name = name.ToLowerInvariant();
-        }
 
-        public static ProductCode Create(Guid id, string name)
-            => new ProductCode(id, name);
+            Code = code;
+        }
 
         public static ProductCode Create(string name)
-            => new ProductCode(Guid.NewGuid(), name);
+            => new ProductCode(name);
+
+        protected override bool EqualsCore(ProductCode other)
+            => Code.Equals(other.Code);
+
+        protected override int GetHashCodeCore() => Code.GetHashCode();
     }
 }

@@ -4,7 +4,7 @@ using System;
 
 namespace PKShop.Domain.DomainClasses.Countries
 {
-    public class Country : BaseEntity
+    public class Country : EntityBase
     {
         public Guid Id { get; protected set; }
         public string Name { get; protected set; }

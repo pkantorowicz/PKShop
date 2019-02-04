@@ -6,7 +6,7 @@ using PKShop.Domain.DomainClasses.Abstract;
 
 namespace PKShop.Domain.DomainClasses.Identity
 {
-    public class User : BaseEntity
+    public class User : EntityBase
     {
         private static readonly Regex EmailRegex = new Regex(
             @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +

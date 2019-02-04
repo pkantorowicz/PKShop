@@ -10,7 +10,7 @@ using PKShop.Struct.WriteData.Contexts;
 
 namespace PKShop.Struct.WriteData.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : BaseEntity
+    public class Repository<T> : IRepository<T> where T : EntityBase
     {
         private readonly PKShopContext _context;
         private readonly DbSet<T> _entity;

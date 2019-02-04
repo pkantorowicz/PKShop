@@ -1,9 +1,7 @@
 ﻿using System;
-
 namespace PKShop.Domain.DomainClasses.Abstract
 {
-    public abstract class BaseEntity 
+    public interface IEntity : IIdentifiable, IEditable, ITimestampable
     {
-        Guid Id { get; }
     }
 }
