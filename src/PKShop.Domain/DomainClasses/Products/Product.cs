@@ -4,11 +4,10 @@ using System;
 
 namespace PKShop.Domain.DomainClasses.Products
 {
-    public class Product : BaseEntity
+    public class Product : AggregateBase<ProductId>
     {
         //private List<Return> _returns = new List<Return>();
 
-        public Guid Id { get; protected set; }
         public string Name { get; protected set; }
         public DateTime CreatedAt { get; protected set; }
         public DateTime UpdatedAt { get; protected set; }
@@ -23,9 +22,9 @@ namespace PKShop.Domain.DomainClasses.Products
         {
         }
 
-        public Product(Guid id, string name, int quantity, decimal cost)
+        public Product(ProductId productId, string name, int quantity, decimal cost)
         {
-            Id = id;
+            Id = productId;
             Name = name;
             Active = true;
             Quantity = quantity;
@@ -34,10 +33,10 @@ namespace PKShop.Domain.DomainClasses.Products
             CreatedAt = DateTime.UtcNow;
         }
 
-        public Product(Guid id, string name, int quantity, decimal cost,
+        public Product(ProductId productId, string name, int quantity, decimal cost,
             ProductCode code, Category category)
         {
-            Id = id;
+            Id = productId;
             Name = name;
             Active = true;
             Quantity = quantity;
