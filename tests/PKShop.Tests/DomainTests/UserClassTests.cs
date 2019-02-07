@@ -1,6 +1,6 @@
-﻿using PKShop.Domain.Exceptions;
+﻿using PKShop.Domain.DomainClasses.Identity;
+using PKShop.Domain.Exceptions;
 using Xunit;
-using PKShop.Domain.DomainClasses.Identity;
 
 namespace PKShop.Tests.DomainTests
 {

@@ -1,9 +1,9 @@
 ﻿using PKShop.Domain.Exceptions;
-using PKShop.Domain.DomainClasses.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using PKShop.Core.Types;
 
 namespace PKShop.Domain.DomainClasses.Customers
 {

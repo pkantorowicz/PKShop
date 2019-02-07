@@ -4,13 +4,13 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using PKShop.Domain.DomainClasses.Abstract;
+using PKShop.Core.Types;
 using PKShop.Domain.Interfaces;
 using PKShop.Struct.WriteData.Contexts;
 
 namespace PKShop.Struct.WriteData.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : EntityBase
+    public class Repository<T> : IRepository<T> where T : class, IIdentifiable
     {
         private readonly PKShopContext _context;
         private readonly DbSet<T> _entity;

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace PKShop.Domain.DomainClasses.Abstract
+namespace PKShop.Core.Types
 {
-    public abstract class EntityBase : IEntity
+    public abstract class AggregateBase : IAggregate
     {
         public Guid Id { get; protected set; }
         public DateTime UpdatedAt { get; protected set; }

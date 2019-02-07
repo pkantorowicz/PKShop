@@ -1,12 +1,12 @@
-﻿using PKShop.Domain.DomainClasses.Abstract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using PKShop.Domain.Exceptions.DomainExceptions;
+using PKShop.Core.Types;
 
 namespace PKShop.Domain.DomainClasses.Products
 {
-    public class Product : AggregateBase<ProductId>
+    public class Product : AggregateBase
     {
         private ISet<Return> _returns = new HashSet<Return>();
         private ISet<Category> _categories = new HashSet<Category>();
@@ -34,7 +34,7 @@ namespace PKShop.Domain.DomainClasses.Products
         {
         }
 
-        public Product(ProductId productId, string name, int quantity, decimal cost)
+        public Product(Guid productId, string name, int quantity, decimal cost)
         {
             Id = productId;
             Name = name;
@@ -43,7 +43,7 @@ namespace PKShop.Domain.DomainClasses.Products
             CreatedAt = DateTime.UtcNow;
         }
 
-        public Product(ProductId productId, string name, int quantity, decimal cost, ProductCode code)
+        public Product(Guid productId, string name, int quantity, decimal cost, ProductCode code)
         {
             Id = productId;
             Name = name;

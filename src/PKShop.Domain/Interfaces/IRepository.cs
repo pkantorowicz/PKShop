@@ -1,12 +1,12 @@
+using PKShop.Core.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using PKShop.Domain.DomainClasses.Abstract;
 
 namespace PKShop.Domain.Interfaces
 {
-    public interface IRepository<T> where T : EntityBase
+    public interface IRepository<T> where T : class, IIdentifiable
     {
         T Get(Guid id);
         Task<T> GetAsync(Guid id);

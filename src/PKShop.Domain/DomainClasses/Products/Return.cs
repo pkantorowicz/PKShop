@@ -1,4 +1,4 @@
-﻿using PKShop.Domain.DomainClasses.Abstract;
+﻿using PKShop.Core.Types;
 using PKShop.Domain.DomainClasses.Customers;
 using PKShop.Domain.Exceptions.DomainExceptions;
 using System;

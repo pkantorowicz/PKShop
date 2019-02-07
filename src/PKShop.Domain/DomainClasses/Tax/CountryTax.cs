@@ -1,7 +1,7 @@
 ﻿using PKShop.Domain.DomainClasses.Countries;
 using PKShop.Domain.Exceptions;
-using PKShop.Domain.DomainClasses.Abstract;
 using System;
+using PKShop.Core.Types;
 
 namespace PKShop.Domain.DomainClasses.Tax
 {

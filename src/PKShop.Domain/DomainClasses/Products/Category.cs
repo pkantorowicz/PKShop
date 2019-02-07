@@ -1,20 +1,20 @@
-﻿using PKShop.Domain.DomainClasses.Abstract;
-using System;
+﻿using System;
 using PKShop.Domain.Exceptions.DomainExceptions;
+using PKShop.Core.Types;
 
 namespace PKShop.Domain.DomainClasses.Products
 {
     public class Category : EntityBase
     {
-        public ProductId ProductId { get; private set; }
-        public Product Product { get; private set; }
-        public string Name { get; private set; }
+        public Guid ProductId { get; protected set; }
+        public Product Product { get; protected set; }
+        public string Name { get; protected set; }
 
         protected Category()
         {
         }
 
-        public Category(Guid categoryId, ProductId productId, Product product, string name)
+        public Category(Guid categoryId, Guid productId, Product product, string name)
         {
             Id = categoryId;
             ProductId = productId;

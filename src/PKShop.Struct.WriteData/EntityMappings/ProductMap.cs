@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PKShop.Domain.DomainClasses.Products;
 
 namespace PKShop.Struct.WriteData.EntityMappings
-{    
+{
     public class ProductMap : IEntityTypeConfiguration<Product>
     {
         public void Configure(EntityTypeBuilder<Product> builder)

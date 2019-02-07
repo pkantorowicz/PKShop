@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Text.RegularExpressions;
-using PKShop.Domain.DomainClasses.Abstract;
+using PKShop.Core.Types;
 
 namespace PKShop.Domain.DomainClasses.Identity
 {

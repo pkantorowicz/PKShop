@@ -1,9 +1,9 @@
 ﻿using PKShop.Domain.DomainClasses.Identity;
 using PKShop.Domain.DomainClasses.Products;
-using PKShop.Domain.DomainClasses.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PKShop.Core.Types;
 
 namespace PKShop.Domain.DomainClasses.Carts
 {

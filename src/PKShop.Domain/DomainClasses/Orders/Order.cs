@@ -1,4 +1,4 @@
-﻿using PKShop.Domain.DomainClasses.Abstract;
+﻿using PKShop.Core.Types;
 using System;
 using System.Collections.Generic;
 

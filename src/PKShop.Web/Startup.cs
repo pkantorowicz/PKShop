@@ -14,10 +14,10 @@ using PKShop.Common.Identity;
 using PKShop.Common.Identity.Data;
 using PKShop.Common.Identity.Models;
 using PKShop.Domain;
+using PKShop.Struct.WriteData.Contexts;
 using PKShop.Web.Extensions;
 using System;
 using System.Reflection;
-using PKShop.Struct.WriteData.Contexts;
 
 namespace PKShop.Web
 {
